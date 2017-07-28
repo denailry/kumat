@@ -357,6 +357,8 @@ public class BukuHutangFragment extends Fragment implements BukuHutangListener{
         aktivitasKeuangan.setTahun(year);
         aktivitasKeuangan.save();
 
+        Log.d("bukuu", "pengeluaran: "+day+","+month+","+year);
+
         idAktivitas++;
 
         saldo = saldo-hargaBarang;

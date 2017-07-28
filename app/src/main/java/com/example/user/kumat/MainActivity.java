@@ -847,6 +847,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
     }
 
     public void setNotif(PengeluaranOtomatisDatabase pengeluaranOtomatis){
+        Log.d("NOTIF-WOY", "TES");
 
         Calendar calendar = Calendar.getInstance();
 
@@ -895,6 +896,8 @@ public class MainActivity extends AppCompatActivity implements IconListener {
         intent.putExtra("nama",pengeluaranOtomatis.getNamaBarang());
         intent.putExtra("harga",pengeluaranOtomatis.getHargaBarang());
         intent.putExtra("tanggal",pengeluaranOtomatis.getTanggal());
+        Log.d("NOTIF-WOY", "SENT");
+        Log.d("NOTIF-WOY", String.valueOf(pengeluaranOtomatis.getId()+","+month+","+year+","+pengeluaranOtomatis.getTanggal())+","+pengeluaranOtomatis.getJam()+","+pengeluaranOtomatis.getMenit());
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, pengeluaranOtomatis.getId(),intent, PendingIntent.FLAG_UPDATE_CURRENT);
 

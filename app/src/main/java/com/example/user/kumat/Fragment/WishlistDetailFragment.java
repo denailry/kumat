@@ -17,10 +17,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.user.kumat.Database.ProfilDatabase;
+import com.example.user.kumat.Database.ProfilDatabase_Table;
 import com.example.user.kumat.Database.WishlistDatabase;
 import com.example.user.kumat.Database.WishlistDatabase_Table;
 import com.example.user.kumat.Listener.OnFragmentDestroyListener;
 import com.example.user.kumat.Listener.OnItemSaveListener;
+import com.example.user.kumat.MainActivity;
 import com.example.user.kumat.R;
 import com.raizlabs.android.dbflow.sql.language.Select;
 
@@ -217,6 +220,15 @@ public class WishlistDetailFragment extends Fragment {
                             .querySingle();
                     tabunganku.addTabungan(difference, false);
                     tabunganku.save();
+                }
+                ProfilDatabase profile = new Select()
+                        .from(ProfilDatabase.class)
+                        .where(ProfilDatabase_Table.Username.eq(((MainActivity) getActivity()).usernameAktif))
+                        .querySingle();
+                if(profile != null) {
+                    float koinfromTarget = item.getTarget()/25000;
+                    int newKoin = profile.getKoin() + (int) koinfromTarget;
+                    profile.setKoin(newKoin);
                 }
                 item.delete();
                 isDataChanged = true;

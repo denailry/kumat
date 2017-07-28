@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.support.v7.app.NotificationCompat;
+import android.util.Log;
 
 import com.example.user.kumat.Database.AktivitasKeuanganDatabase;
 import com.example.user.kumat.Database.SaldoDatabase;
@@ -23,6 +24,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
+        Log.d("NOTIF-WOY", "RECEIVE");
         Calendar calendar =Calendar.getInstance();
         int month = calendar.get(Calendar.MONTH);
         int year  = calendar.get(Calendar.YEAR);
@@ -45,6 +47,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             int idxQuick = saldoAktiv.getIndexQuick();
 
             String title = "Pengeluaran Otomatis";
+            Log.d("NOTIF-WOY", title);
             String content = nama+" telah tercatat! jangan lupa bayar kewajiban kamu.";
 
             if (harga>saldo){

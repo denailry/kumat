@@ -147,9 +147,7 @@ public class WishlistChangeFragment extends Fragment {
             tvChoice.setText(strChoice);
             if(item.getId() == 1) {
                 btnFromElse.setVisibility(View.GONE);
-                cntChoice.setVisibility(View.GONE);
             }
-
             btnFromSaldo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
