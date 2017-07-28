@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -37,28 +39,33 @@ public class Bubble extends Service {
 
         relativeLayout = new RelativeLayout(this);
         relativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(150, displayHeight));
-        relativeLayout.setBackgroundColor(Color.parseColor("#00FF00"));
+        relativeLayout.setBackgroundResource(R.drawable.bubble_trash);
+//        relativeLayout.setBackgroundColor(Color.parseColor("#00FF00"));
         relativeLayout.setGravity(Gravity.CENTER);
-        trash = new Button(this);
-        trash.setLayoutParams(new ViewGroup.LayoutParams(50, 50));
-        trash.setBackgroundColor(Color.parseColor("#FF00FF"));
-        relativeLayout.addView(trash);
+//        trash = new Button(this);
+//        trash.setLayoutParams(new ViewGroup.LayoutParams(50, 50));
+//        trash.setBackgroundColor(Color.parseColor("#FF00FF"));
+//        relativeLayout.addView(trash);
         relativeLayout.setVisibility(View.GONE);
 
         bubble = new ImageView(this);
         //a face floating bubble as imageView
-        bubble.setImageResource(R.drawable.iv_chicken);
+        bubble.setImageResource(R.drawable.bubble_icon);
 
         trashManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         final WindowManager.LayoutParams trashParams = new WindowManager.LayoutParams(
-                200,
+                400,
                 displayHeight,
                 WindowManager.LayoutParams.TYPE_PHONE,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
         trashParams.x = displayWidth/2;
         trashParams.y = 0;
-        trashManager.addView(relativeLayout, trashParams);
+        try {
+            trashManager.addView(relativeLayout, trashParams);
+        } catch (WindowManager.BadTokenException e) {
+            Log.e(getClass().getSimpleName(), e.toString());
+        }
 
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         final WindowManager.LayoutParams myParams = new WindowManager.LayoutParams(
@@ -69,7 +76,11 @@ public class Bubble extends Service {
                 PixelFormat.TRANSLUCENT);
         myParams.x = -displayWidth/2;
         myParams.y = displayHeight/2;
-        windowManager.addView(bubble, myParams);
+        try {
+            windowManager.addView(bubble, myParams);
+        } catch (WindowManager.BadTokenException e) {
+            Log.e(getClass().getSimpleName(), e.toString());
+        }
 
         try{
             //for moving the picture on touch and slide
@@ -81,6 +92,7 @@ public class Bubble extends Service {
                 private float initialTouchX;
                 private float initialTouchY;
                 private int boundary = displayWidth - 400;
+                private long initialTime;
 
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
@@ -94,11 +106,20 @@ public class Bubble extends Service {
                             relativeLayout.setVisibility(View.VISIBLE);
                             initialX = paramsT.x;
                             initialY = paramsT.y;
+                            initialTime = System.currentTimeMillis();
                             initialTouchX = event.getRawX();
                             initialTouchY = event.getRawY();
                             isOnTouch = true;
                             break;
                         case MotionEvent.ACTION_UP:
+                            if(System.currentTimeMillis() - initialTime < ViewConfiguration.getLongPressTimeout()) {
+                                Intent activityStart = new Intent(getApplicationContext(), MainActivity.class);
+                                activityStart.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(activityStart);
+                                windowManager.removeView(bubble);
+                                trashManager.removeView(relativeLayout);
+                                stopSelf();
+                            }
                             relativeLayout.setVisibility(View.GONE);
                             if(coordinate[0] > boundary) {
                                 windowManager.removeView(bubble);
@@ -139,17 +160,17 @@ public class Bubble extends Service {
             }
         });
 
-        bubble.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent activityStart = new Intent(getApplicationContext(), MainActivity.class);
-                activityStart.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(activityStart);
-                windowManager.removeView(bubble);
-                trashManager.removeView(relativeLayout);
-                stopSelf();
-            }
-        });
+//        bubble.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent activityStart = new Intent(getApplicationContext(), MainActivity.class);
+//                activityStart.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(activityStart);
+//                windowManager.removeView(bubble);
+//                trashManager.removeView(relativeLayout);
+//                stopSelf();
+//            }
+//        });
 
         return super.onStartCommand(intent, flags, startId);
     }
