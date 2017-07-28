@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_aktivitas"
-        android:icon="@drawable/mobil1"
+        android:icon="@drawable/edit_icon_quick"
         app:showAsAction="always"
         android:title=""
         android:orderInCategory="100"/>

@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f7f5f0"
     tools:context="com.example.user.kumat.Fragment.PengeluaranOtomatisFragment">
 
     <EditText
@@ -78,30 +79,45 @@
             android:id="@+id/btn_jam_otomatis"/>
     </RelativeLayout>
     <Button
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:text="submit"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/submit_button"
         android:layout_below="@id/rel4"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
         android:id="@+id/btn_submit_otomatis"
         android:layout_marginTop="10dp"/>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/btn_submit_otomatis"
-        android:layout_marginTop="20dp">
-        <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/rel4"
+        android:background="@android:color/white"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/rv_pengeluaran_otomatis"></android.support.v7.widget.RecyclerView>
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:id="@+id/no_item_otomatis"
-            android:layout_gravity="center"
-            android:src="@drawable/noitem"/>
-    </FrameLayout>
+            android:layout_below="@+id/btn_submit_otomatis"
+            android:layout_weight="1">
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="35dp"
+                android:id="@+id/rv_pengeluaran_otomatis"></android.support.v7.widget.RecyclerView>
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:id="@+id/no_item_otomatis"
+                android:layout_gravity="center"
+                android:src="@drawable/noitem"/>
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#dbfcf9" />
+    </LinearLayout>
 
 
 </RelativeLayout>

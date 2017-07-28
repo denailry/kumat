@@ -93,8 +93,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="#dbfcf9"
-            android:layout_below="@+id/q"/>
+            android:background="#dbfcf9" />
 
     </LinearLayout>
 
