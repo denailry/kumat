@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:id="@+id/backgroud_list"
+    android:layout_marginBottom="5dp">
+
+    <Button
+        android:layout_width="22dp"
+        android:layout_height="16dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/btn_delete"
+        android:background="@drawable/v_bawah"
+        android:layout_marginLeft="20dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="parkiran"
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/btn_delete"
+        android:layout_centerVertical="true"
+        android:textColor="@android:color/black"
+        android:layout_marginLeft="15dp"
+        android:textSize="20sp"
+        android:id="@+id/txt_detail"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="27-11-2016"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:id="@+id/txt_tanggal_detail"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10000"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/txt_tanggal_detail"
+        android:id="@+id/txt_harga_detail"
+        android:layout_marginRight="25dp"/>
+
+</RelativeLayout>

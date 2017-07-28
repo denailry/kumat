@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00ffffff"
+    android:id="@+id/back_delete_aktivitas">
+    
+    <RelativeLayout
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:background="@drawable/shape_aktivitas"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Uang Kiriman Bapak"
+            android:textColor="@android:color/black"
+            android:layout_alignLeft="@+id/view1"
+            android:layout_marginTop="20dp"
+            android:textSize="17sp"
+            android:id="@+id/txt_detail_delete"/>
+        <View
+            android:layout_width="150dp"
+            android:layout_height="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/txt_detail_delete"
+            android:background="#b7b7b7"
+            android:id="@+id/view1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp 1.000.000,-"
+            android:textColor="@android:color/black"
+            android:layout_alignLeft="@+id/view2"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/view1"
+            android:textSize="17sp"
+            android:id="@+id/txt_harga_delete"/>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="5dp"
+            android:layout_alignLeft="@+id/view1"
+            android:layout_alignRight="@+id/view1"
+            android:layout_below="@+id/txt_harga_delete"
+            android:background="#b7b7b7"
+            android:id="@+id/view2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="27 Juli 2017"
+            android:textColor="@android:color/black"
+            android:layout_alignLeft="@+id/view2"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/view2"
+            android:textSize="17sp"
+            android:id="@+id/tanggal_delete"/>
+        
+        <Button
+            android:layout_width="110dp"
+            android:layout_height="35dp"
+            android:text="Delete"
+            android:background="#f05d65"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/btn_delete_detail"
+            android:textSize="16sp"
+            android:textAllCaps="false"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

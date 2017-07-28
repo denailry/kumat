@@ -1,0 +1,184 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.user.kumat.Fragment.KeuanganFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relatas">
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/radio_grup_penge">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pengeluaran"
+                android:id="@+id/radio_pengeluaran"
+                android:checked="true"
+                android:buttonTint="@android:color/black"
+                android:textSize="15sp"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pemasukan"
+                android:id="@+id/radio_pemasukan"
+                android:buttonTint="@android:color/black"
+                android:textSize="15sp"
+                android:layout_marginLeft="8dp"/>
+        </RadioGroup>
+
+
+
+        <EditText
+            android:layout_below="@+id/radio_grup_penge"
+            android:id="@+id/detail_nama"
+            android:layout_marginTop="3dp"
+            android:textColorHint="@android:color/black"
+            android:textColor="@android:color/black"
+            android:textColorLink="@android:color/black"
+            android:textColorHighlight="@android:color/black"
+            android:shadowColor="@android:color/black"
+            android:backgroundTint="@android:color/black"
+            android:layout_centerHorizontal="true"
+            android:layout_width="170dp"
+            android:layout_height="37dp"
+            android:textSize="13sp"
+            android:ems="10"
+            android:hint="Nama Barang"
+            android:inputType="textPersonName"
+            android:text="" />
+
+        <EditText
+            android:id="@+id/detail_harga"
+            android:layout_width="180dp"
+            android:textColorHint="@android:color/black"
+            android:textColor="@android:color/black"
+            android:textColorLink="@android:color/black"
+            android:textColorHighlight="@android:color/black"
+            android:shadowColor="@android:color/black"
+            android:backgroundTint="@android:color/black"
+            android:textSize="13sp"
+            android:layout_height="37dp"
+            android:ems="10"
+            android:hint="Nominal Harga"
+            android:inputType="number"
+            android:layout_below="@+id/detail_nama"
+            android:layout_alignLeft="@+id/detail_nama"
+            android:layout_alignStart="@+id/detail_nama" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanggal :"
+            android:id="@+id/text3"
+            android:textColor="@android:color/black"
+            android:textSize="13sp"
+            android:layout_below="@+id/detail_harga"
+            android:layout_alignLeft="@+id/detail_harga"
+            android:layout_marginTop="5dp"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rell"
+            android:layout_below="@+id/text3"
+            android:layout_alignLeft="@+id/detail_harga"
+            android:layout_alignRight="@+id/detail_harga"
+            android:layout_marginTop="8dp">
+            <TextView
+                android:id="@+id/detail_tanggal"
+                android:layout_width="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="17/20/2012"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"/>
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/btn_date"
+                android:textSize="10sp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/calender_button"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/btn_submit"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/relatas"
+        android:background="@drawable/submit_button"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/relatas"
+        android:background="@drawable/back_input">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="35dp"
+            android:layout_weight="1"
+            android:id="@+id/reltengah">
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/rv_quick"></android.support.v7.widget.RecyclerView>
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:src="@drawable/noitem"
+                android:id="@+id/no_item"/>
+
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#9df6f0">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Saldo :"
+                android:textSize="25sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SALDO :"
+                android:textSize="23sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/text_saldo"
+                android:layout_marginRight="25dp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

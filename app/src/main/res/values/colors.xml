@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f2a30e</color>
+    <color name="colorPrimaryDark">#f8d186</color>
+    <color name="colorToolbar">#44b5ad</color>
+    <color name="colorOverflow">#A600857e</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="black">#000000</color>
+    <color name="kuning_hutang">#bc7400</color>
+    <color name="biru_hutang">#00857e</color>
+    <color name="kuning_muda_hutang">#fedf00</color>
+    <color name="biru_muda_hutang">#7ae7de</color>
+    <color name="btn_wishlist_save">#9bdbd6</color>
+    <color name="btn_wishlist_delete">#ef5350</color>
+    <color name="btn_wishlist_finish">#f9dd5e </color>
+    <color name="colorBackgorundLightBrown">#ebe5db</color>
+
+</resources>

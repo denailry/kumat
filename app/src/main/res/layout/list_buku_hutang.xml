@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/btn_bayar"
+        android:layout_alignParentLeft="true"
+        android:text="Bayar"
+        android:layout_marginLeft="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Faiz"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/btn_bayar"
+        android:textSize="18sp"
+        android:id="@+id/txt_nama_hutang"
+        android:layout_marginLeft="10dp"
+        android:textColor="@android:color/black"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:text="5000"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:id="@+id/txt_nominal_hutang"
+        android:textSize="20sp" />
+
+</RelativeLayout>

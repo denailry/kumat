@@ -1,0 +1,111 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.user.kumat.Fragment.AktivitasKeuanganFragment">
+
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/radio_grup_waktu">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semua"
+            android:id="@+id/radio_semua"
+            android:checked="true"
+            android:buttonTint="@android:color/black"
+            android:textSize="15sp" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pengeluaran"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/radio_pengeluaran_aktivitas"
+            android:textSize="15sp"
+            android:buttonTint="@android:color/black"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pemasukan"
+            android:id="@+id/radio_pemasukan_aktivitas"
+            android:textSize="15sp"
+            android:buttonTint="@android:color/black"
+            android:layout_marginLeft="5dp"/>
+    </RadioGroup>
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_aktivitas"
+        android:layout_weight="1">
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rv_aktivitas_keuangan"></android.support.v7.widget.RecyclerView>
+        <ImageView
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:src="@drawable/noitem"
+            android:layout_gravity="center"
+            android:id="@+id/no_item_aktivitas"/>
+        
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#9df6f0">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/total_pengeluaran"
+            android:text="100.000"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"
+            android:layout_alignParentRight="true"
+            android:textColor="@android:color/black"
+            android:layout_marginRight="30dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/total_pemasukan"
+            android:layout_below="@+id/total_pengeluaran"
+            android:layout_alignRight="@+id/total_pengeluaran"
+            android:text="10.000"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtpeng"
+            android:text="Total Pengeluaran"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_alignTop="@+id/total_pengeluaran"
+            android:layout_marginLeft="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Pemasukan "
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_alignTop="@id/total_pemasukan"
+            android:layout_alignLeft="@+id/txtpeng"/>
+    </RelativeLayout>
+
+</LinearLayout>

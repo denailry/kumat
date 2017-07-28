@@ -1,0 +1,101 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.user.kumat.Fragment.QuickButtonFragment"
+    android:background="#f7f5f0">
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/relquick1"
+        android:layout_marginTop="40dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/icon_add"
+            android:scaleType="fitXY"
+            android:id="@+id/img_add_photo"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="15dp"/>
+        <EditText
+            android:layout_width="180dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="7dp"
+            android:id="@+id/nama_quick"
+            android:hint="Nama Barang"
+            android:textColorHint="@android:color/black"
+            android:textColor="@android:color/black"
+            android:textColorLink="@android:color/black"
+            android:textColorHighlight="@android:color/black"
+            android:shadowColor="@android:color/black"
+            android:backgroundTint="@android:color/black"
+            android:inputType="textPersonName"
+            android:textSize="13sp"
+            android:layout_toRightOf="@+id/img_add_photo"/>
+        <EditText
+            android:layout_width="180dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="5dp"
+            android:id="@+id/nominal_quick"
+            android:hint="Nominal Harga"
+            android:textColorHint="@android:color/black"
+            android:textColor="@android:color/black"
+            android:textColorLink="@android:color/black"
+            android:textColorHighlight="@android:color/black"
+            android:shadowColor="@android:color/black"
+            android:backgroundTint="@android:color/black"
+            android:layout_toRightOf="@+id/img_add_photo"
+            android:layout_below="@+id/nama_quick"
+            android:inputType="number"
+            android:textSize="13sp"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/submit_button"
+        android:id="@+id/btn_submit_data_quick"
+        android:layout_below="@+id/relquick1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:layout_below="@id/relquick1">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/q"
+            android:layout_weight="1">
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:id="@+id/rv_data_quick"></android.support.v7.widget.RecyclerView>
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/noitem"
+                android:layout_gravity="center"
+                android:id="@+id/no_item_quick"/>
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#dbfcf9"
+            android:layout_below="@+id/q"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

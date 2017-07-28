@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/data_open"
+            android:title="Input Data"/>
+        <item
+            android:id="@+id/nav_aktivitas"
+            android:icon="@drawable/buku_aktivitas_closed"
+            android:title="Buku Aktivitas Keuangan" />
+        <item
+            android:id="@+id/nav_Wishlist"
+            android:icon="@drawable/wishlist_closed"
+            android:title="Wishlist" />
+        <item
+            android:id="@+id/nav_quick"
+            android:icon="@drawable/quickbutton_closed"
+            android:title="Quick Button" />
+        <item
+            android:id="@+id/nav_otomatis"
+            android:icon="@drawable/pengeluaran_otomatis_closed"
+            android:title="Pengeluaran Otomatis" />
+        <item
+            android:id="@+id/nav_shop"
+            android:icon="@drawable/kumatshop_closed"
+            android:title="Kumat Shop"/>
+        <item
+            android:id="@+id/nav_hutang"
+            android:icon="@drawable/buku_hutang_closed"
+            android:title="Buku Hutang"/>
+    </group>
+
+    <item android:title="Lainnya">
+        <menu>
+            <item
+                android:id="@+id/nav_setting"
+                android:title="Pengaturan Umum"/>
+            <item
+                android:id="@+id/nav_help"
+                android:title="Bantuan"/>
+        </menu>
+    </item>
+
+</menu>

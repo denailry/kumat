@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00ffffff"
+    android:id="@+id/background_pilih_icon_quick">
+    
+    <LinearLayout
+        android:layout_width="260dp"
+        android:layout_height="360dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:background="#3eb6ae">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Pilih Icon"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:id="@+id/rv_icon"></android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+</RelativeLayout>

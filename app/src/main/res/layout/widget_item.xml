@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/mobil1"
+        android:id="@+id/widget_icon"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item"
+        android:text="Parkir"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/widget_icon"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_harga"
+        android:text="2000"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_centerVertical="true"
+        android:textSize="18sp"/>
+
+</RelativeLayout>
