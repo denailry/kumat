@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
     int saved=0;
 
     private Calendar calendar;
-    int thisDay,thisMonth,thisYear;
+    public int thisDay,thisMonth,thisYear;
     int DayPilihan1,MonthPilihan1,YearPilihan1,DayPilihan2,MonhtPilihan2,YearPilihan2;
 
     public String usernameAktif;
@@ -848,7 +848,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
 
     public void setNotif(PengeluaranOtomatisDatabase pengeluaranOtomatis){
 
-        Calendar calendar = Calendar.getInstance();
+        calendar = Calendar.getInstance();
 
         int month = thisMonth;
         int year = thisYear;
