@@ -109,7 +109,7 @@ public class ListViewWidgetService extends RemoteViewsService {
 
             // action of a given item
 
-            rv.setOnClickFillInIntent(R.id.item, fillInIntent);
+            rv.setOnClickFillInIntent(R.id.background_widget, fillInIntent);
 
             // Return the RemoteViews object.
 

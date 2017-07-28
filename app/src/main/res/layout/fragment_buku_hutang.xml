@@ -69,7 +69,7 @@
             android:shadowColor="@android:color/black"
             android:backgroundTint="@android:color/black"
             android:textSize="13sp"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:text=""/>
         <TextView
             android:layout_alignLeft="@+id/edit_nominal_hutang"

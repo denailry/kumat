@@ -98,10 +98,9 @@ public class BukuHutangFragment extends Fragment implements BukuHutangListener{
         
         cekSudahBeli();
 
-        Calendar calendar = Calendar.getInstance();
-        thisDay = calendar.get(Calendar.DAY_OF_MONTH);
-        thisMonth = calendar.get(Calendar.MONTH);
-        thisYear = calendar.get(Calendar.YEAR);
+        thisDay = ((MainActivity)getActivity()).thisDay;
+        thisMonth = ((MainActivity)getActivity()).thisMonth;
+        thisYear = ((MainActivity)getActivity()).thisYear;
 
         rvListHutang.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
