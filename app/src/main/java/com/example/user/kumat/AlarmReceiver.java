@@ -10,6 +10,7 @@ import android.support.v7.app.NotificationCompat;
 
 import com.example.user.kumat.Database.AktivitasKeuanganDatabase;
 import com.example.user.kumat.Database.SaldoDatabase;
+import com.example.user.kumat.Database.SaldoDatabase_Table;
 import com.raizlabs.android.dbflow.sql.language.Select;
 
 import java.util.List;
@@ -35,6 +36,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         if (thisDay==tanggal){
             List<SaldoDatabase> saldoSearch = new Select()
                     .from(SaldoDatabase.class)
+                    .where(SaldoDatabase_Table.id.is(1))
                     .queryList();
             SaldoDatabase saldoAktiv = saldoSearch.get(0);
 

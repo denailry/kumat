@@ -6,7 +6,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:id="@+id/icon_quick_button"
-        android:src="@drawable/mobil1"
+        android:src="@drawable/icon_add"
         android:layout_below="@+id/txtNama"
         android:scaleType="fitXY"
         android:layout_marginTop="10dp"

@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#f8f8f8">
+    android:background="#c4a42f">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@color/colorToolbar"
+        android:background="#f1a20e"
         android:id="@+id/f">
 
         <TextView
@@ -18,7 +18,7 @@
             android:textColor="@android:color/white"
             android:textStyle="bold|italic"
             android:layout_centerInParent="true"
-            android:textSize="18sp"/>
+            android:textSize="23sp"/>
     </RelativeLayout>
 
     <ListView

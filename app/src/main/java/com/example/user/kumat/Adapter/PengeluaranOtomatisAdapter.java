@@ -1,5 +1,6 @@
 package com.example.user.kumat.Adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,10 +23,12 @@ public class PengeluaranOtomatisAdapter extends RecyclerView.Adapter<Pengeluaran
 
     PengeluaranOtomatisListener listener;
     ArrayList<PengeluaranOtomatisDatabase> listPengeluaranOtomatis;
+    Context context;
 
-    public PengeluaranOtomatisAdapter (ArrayList<PengeluaranOtomatisDatabase> listPengeluaranOtomatis, PengeluaranOtomatisListener listener){
+    public PengeluaranOtomatisAdapter (ArrayList<PengeluaranOtomatisDatabase> listPengeluaranOtomatis, PengeluaranOtomatisListener listener, Context context){
         this.listPengeluaranOtomatis=listPengeluaranOtomatis;
         this.listener=listener;
+        this.context = context;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -55,11 +58,12 @@ public class PengeluaranOtomatisAdapter extends RecyclerView.Adapter<Pengeluaran
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position){
+    public void onBindViewHolder(final ViewHolder holder, int position){
         final PengeluaranOtomatisDatabase pengeluaranOtomatisDatabase = listPengeluaranOtomatis.get(position);
 
         holder.txtNamaBarang.setText(String.valueOf(pengeluaranOtomatisDatabase.getNamaBarang()));
         holder.txtHargaBarang.setText(editRupiah(String.valueOf(pengeluaranOtomatisDatabase.getHargaBarang())));
+        holder.btnDelete.setBackground(context.getResources().getDrawable(R.drawable.v_bawah_hijau));
 
         String jam,menit,tanggal;
 
@@ -86,6 +90,7 @@ public class PengeluaranOtomatisAdapter extends RecyclerView.Adapter<Pengeluaran
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                holder.btnDelete.setBackground(context.getResources().getDrawable(R.drawable.v_atas_hijau));
                 listener.onClickDeleteOtomatis(pengeluaranOtomatisDatabase);
             }
         });
@@ -116,9 +121,10 @@ public class PengeluaranOtomatisAdapter extends RecyclerView.Adapter<Pengeluaran
             length = length-3;
         }
 
-        edtRuiah = "Rp " + edtRuiah;
+        edtRuiah = "Rp " + edtRuiah+",-";
 
         return edtRuiah;
     }
+
 
 }

@@ -30,11 +30,9 @@ public class IconAdapter extends RecyclerView.Adapter<IconAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imgIcon;
-        LinearLayout layoutIcon;
         public ViewHolder(View v){
             super(v);
             imgIcon=(ImageView)v.findViewById(R.id.icon_quick);
-            layoutIcon=(LinearLayout)v.findViewById(R.id.layout_icon);
         }
     }
 

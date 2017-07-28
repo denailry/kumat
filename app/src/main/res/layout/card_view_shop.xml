@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_below="@+id/txt_judul_shop"
                 android:layout_height="140dp"
-                android:src="@drawable/mobil1"
+                android:src="@drawable/icon_add"
                 android:scaleType="fitXY"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"

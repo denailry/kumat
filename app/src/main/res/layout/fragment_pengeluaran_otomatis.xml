@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f7f5f0"
+    android:background="#efede9"
     tools:context="com.example.user.kumat.Fragment.PengeluaranOtomatisFragment">
 
     <EditText
@@ -59,6 +59,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/rel4"
         android:layout_below="@+id/tanggal_otomatis"
+        android:layout_marginTop="10dp"
         android:layout_alignLeft="@+id/tanggal_otomatis"
         android:layout_alignRight="@+id/tanggal_otomatis">
         <TextView
@@ -76,7 +77,8 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
-            android:id="@+id/btn_jam_otomatis"/>
+            android:id="@+id/btn_jam_otomatis"
+            android:background="@drawable/jam"/>
     </RelativeLayout>
     <Button
         android:layout_width="60dp"
@@ -86,14 +88,14 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="25dp"
         android:id="@+id/btn_submit_otomatis"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="5dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/rel4"
         android:background="@android:color/white"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
         android:orientation="vertical">
         <FrameLayout
             android:layout_width="match_parent"
@@ -116,7 +118,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="#dbfcf9" />
+            android:background="#9df6f0" />
     </LinearLayout>
 
 

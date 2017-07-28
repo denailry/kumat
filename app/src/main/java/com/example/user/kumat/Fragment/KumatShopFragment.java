@@ -79,7 +79,7 @@ public class KumatShopFragment extends Fragment implements ShopListener {
 
         ShopDatabase sho = new ShopDatabase();
         sho.setId(1);
-        sho.setFoto(R.drawable.mobil1);
+        sho.setFoto(R.drawable.icon_add);
         sho.setJudul("FITUR BUKU TABUNGAN");
         sho.setKoin(100);
         listShop.add(sho);
