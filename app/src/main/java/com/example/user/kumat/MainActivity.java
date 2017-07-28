@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
     int day,month,year;
 
     CircleImageView fotoProfil;
-    TextView namaProfil,emailProfil,koinProfil,lvlProfil;
+    TextView namaProfil,emailProfil,koinProfil;
 
     NavigationView navigationView;
     DrawerLayout drawer;
@@ -85,10 +85,8 @@ public class MainActivity extends AppCompatActivity implements IconListener {
 
     int hour,minute;
 
-    RelativeLayout backgroundPopUp,backgroundPutih,backgroundHapus;
-    Button btnYa,btnTidak;
+    RelativeLayout backgroundPopUp;
     boolean cekBackground = false;
-    Button btnExit;
     Button btnDate1,btnDate2;
     TextView txtCustom1,txtCustom2;
 
@@ -99,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
     RadioGroup radioGrupPeriode;
     int pilihanPeriode = 0;
     Button btnSubmitPeriode;
-    RelativeLayout milihDate1,milihDate2;
+    RelativeLayout milihDate;
     int periodeSaved = R.id.radio_semua_data;
     int periode;
     int saved=0;
@@ -122,6 +120,10 @@ public class MainActivity extends AppCompatActivity implements IconListener {
     TextView txtDataQuickButtonDelete,txtNominalQuickButtonDelete;
     ImageView imgQuickButtonDelete;
     Button btnQuickButtonDelete;
+
+    RelativeLayout backgroundDeleteOtomatis;
+    TextView txtNamaOtomatis,txtNominalOtomatis,txtWaktuOtomatis;
+    Button btnDeleteOtomatis;
 
     // index to identify current nav menu item
     public static int navItemIndex = 0;
@@ -162,25 +164,18 @@ public class MainActivity extends AppCompatActivity implements IconListener {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         backgroundPopUp = (RelativeLayout)findViewById(R.id.background_pop_up);
         backgroundPopUp.setVisibility(View.GONE);
-        backgroundPutih=(RelativeLayout)findViewById(R.id.background_pop_up_putih);
-        btnExit=(Button)findViewById(R.id.btn_exit);
         radioGrupPeriode = (RadioGroup)findViewById(R.id.radio_grup_periode);
         btnSubmitPeriode = (Button)findViewById(R.id.btn_submit_periode);
         btnDate1 = (Button)findViewById(R.id.btn_custom_1);
         btnDate2 = (Button)findViewById(R.id.btn_custom_2);
         txtCustom1 = (TextView)findViewById(R.id.txt_custom_1);
         txtCustom2 = (TextView)findViewById(R.id.txt_custom_2);
-        milihDate1 = (RelativeLayout)findViewById(R.id.rel1);
-        milihDate2 = (RelativeLayout)findViewById(R.id.rel2);
+        milihDate = (RelativeLayout)findViewById(R.id.relbe);
         navHeader=navigationView.getHeaderView(0);
         fotoProfil = (CircleImageView)navHeader.findViewById(R.id.foto_profil);
         namaProfil = (TextView)navHeader.findViewById(R.id.txt_username);
         emailProfil = (TextView)navHeader.findViewById(R.id.txt_user_email);
         koinProfil = (TextView)navHeader.findViewById(R.id.jml_koin);
-        lvlProfil = (TextView)navHeader.findViewById(R.id.txt_lvl);
-        backgroundHapus = (RelativeLayout)findViewById(R.id.background_persetujuan_hapus);
-        btnYa = (Button)findViewById(R.id.btn_ya);
-        btnTidak = (Button)findViewById(R.id.btn_tidak);
         backgroundDeleteAktivitas = (RelativeLayout)findViewById(R.id.back_delete_aktivitas);
         txtDetailBarang = (TextView)findViewById(R.id.txt_detail_delete);
         txtDetailHarga = (TextView)findViewById(R.id.txt_harga_delete);
@@ -193,6 +188,31 @@ public class MainActivity extends AppCompatActivity implements IconListener {
         txtNominalQuickButtonDelete = (TextView)findViewById(R.id.txt_nominal_delete_quick);
         imgQuickButtonDelete = (ImageView)findViewById(R.id.img_icon_delete_quick);
         btnQuickButtonDelete = (Button)findViewById(R.id.btn_delete_quick);
+        backgroundDeleteOtomatis = (RelativeLayout)findViewById(R.id.background_delete_otomatis);
+        txtNamaOtomatis = (TextView)findViewById(R.id.txt_detail_delete_otomatis);
+        txtNominalOtomatis = (TextView)findViewById(R.id.txt_harga_delete_otomatis);
+        txtWaktuOtomatis = (TextView)findViewById(R.id.waktu_delete_otomatis);
+        btnDeleteOtomatis = (Button)findViewById(R.id.btn_delete_detail_otomatis);
+
+        backgroundDeleteOtomatis.setVisibility(View.GONE);
+        backgroundDeleteOtomatis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backgroundDeleteOtomatis.setVisibility(View.GONE);
+                FragmentManager fm = getSupportFragmentManager();
+                PengeluaranOtomatisFragment fragment = (PengeluaranOtomatisFragment)fm.findFragmentById(R.id.frame_container);
+                fragment.notifyData();
+            }
+        });
+        btnDeleteOtomatis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backgroundDeleteOtomatis.setVisibility(View.GONE);
+                FragmentManager fm = getSupportFragmentManager();
+                PengeluaranOtomatisFragment fragment = (PengeluaranOtomatisFragment)fm.findFragmentById(R.id.frame_container);
+                fragment.onTerimaDelete();
+            }
+        });
 
         backgroundDeleteQuickButton.setVisibility(View.GONE);
         backgroundDeleteQuickButton.setOnClickListener(new View.OnClickListener() {
@@ -248,40 +268,6 @@ public class MainActivity extends AppCompatActivity implements IconListener {
             }
         });
 
-        backgroundHapus.setVisibility(View.GONE);
-
-        backgroundHapus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                backgroundHapus.setVisibility(View.GONE);
-            }
-        });
-
-        btnTidak.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                backgroundHapus.setVisibility(View.GONE);
-            }
-        });
-        btnYa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                backgroundHapus.setVisibility(View.GONE);
-                FragmentManager fm = getSupportFragmentManager();
-
-                if (navItemIndex==1){
-                    AktivitasKeuanganFragment fragment = (AktivitasKeuanganFragment)fm.findFragmentById(R.id.frame_container);
-                    fragment.onTerimaDelete();
-                }else if (navItemIndex==3){
-                    QuickButtonFragment fragment = (QuickButtonFragment)fm.findFragmentById(R.id.frame_container);
-                    fragment.onTerimaDelete();
-                }else if (navItemIndex==4){
-                    PengeluaranOtomatisFragment fragment = (PengeluaranOtomatisFragment)fm.findFragmentById(R.id.frame_container);
-                    fragment.onTerimaDelete();
-                }
-            }
-        });
-
         setUpHeader();
 
 
@@ -303,20 +289,16 @@ public class MainActivity extends AppCompatActivity implements IconListener {
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 if (checkedId==R.id.radio_semua_data){
                     pilihanPeriode = 0;
-                    milihDate1.setVisibility(View.GONE);
-                    milihDate2.setVisibility(View.GONE);
+                    milihDate.setVisibility(View.GONE);
                 }else if (checkedId== R.id.radio_bulan){
                     pilihanPeriode= 1;
-                    milihDate1.setVisibility(View.GONE);
-                    milihDate2.setVisibility(View.GONE);
+                    milihDate.setVisibility(View.GONE);
                 }else if (checkedId==R.id.radio_hari){
                     pilihanPeriode = 2;
-                    milihDate1.setVisibility(View.GONE);
-                    milihDate2.setVisibility(View.GONE);
+                    milihDate.setVisibility(View.GONE);
                 }else if (checkedId==R.id.radio_custom){
                     pilihanPeriode=3;
-                    milihDate1.setVisibility(View.VISIBLE);
-                    milihDate2.setVisibility(View.VISIBLE);
+                    milihDate.setVisibility(View.VISIBLE);
                 }
                 periode=checkedId;
             }
@@ -360,13 +342,6 @@ public class MainActivity extends AppCompatActivity implements IconListener {
 
         navigationView.getMenu().getItem(6).setActionView(R.layout.tambahan_mode);
 
-        btnExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                backgroundPopUp.setVisibility(View.GONE);
-                cekBackground=false;
-            }
-        });
 
         backgroundPopUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -403,21 +378,18 @@ public class MainActivity extends AppCompatActivity implements IconListener {
             profil.setKoin(100);
             profil.setBukuHutang(false);
             profil.setEmail("kumat@email.com");
-            profil.setLvl(1);
             profil.setXp(0);
             profil.save();
 
             setUpNama(usernameAktif);
             setUpJumlahKoin(100);
             setUpEmail(profil.getEmail());
-            setUpLevel(profil.getLvl());
         }else{
             ProfilDatabase profilDatabase = profilSearch.get(0);
             usernameAktif = profilDatabase.getUsername();
             setUpEmail(profilDatabase.getEmail());
             setUpNama(profilDatabase.getUsername());
             setUpJumlahKoin(profilDatabase.getKoin());
-            setUpLevel(profilDatabase.getLvl());
             if (profilDatabase.getIkon()!=null){
                 setUpFoto(profilDatabase.getIkon());
             }
@@ -437,9 +409,6 @@ public class MainActivity extends AppCompatActivity implements IconListener {
     }
     private void setUpJumlahKoin(int koin){
         koinProfil.setText(String.valueOf(koin));
-    }
-    private void setUpLevel(int lvl){
-        lvlProfil.setText("lvl "+String.valueOf(lvl));
     }
 
     private void setHariini() {
@@ -522,8 +491,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
                         radioGrupPeriode.clearCheck();
                         radioGrupPeriode.check(R.id.radio_semua_data);
                         setHariini();
-                        milihDate1.setVisibility(View.GONE);
-                        milihDate2.setVisibility(View.GONE);
+                        milihDate.setVisibility(View.GONE);
                         pilihanPeriode=0;
                         saved=pilihanPeriode;
                         periodeSaved=R.id.radio_semua_data;
@@ -678,6 +646,11 @@ public class MainActivity extends AppCompatActivity implements IconListener {
         }else if (backgroundDeleteQuickButton.getVisibility()==View.VISIBLE){
             backgroundDeleteQuickButton.setVisibility(View.GONE);
             return;
+        }else if (backgroundDeleteOtomatis.getVisibility()==View.VISIBLE){
+            backgroundDeleteOtomatis.setVisibility(View.GONE);
+            FragmentManager fm = getSupportFragmentManager();
+            PengeluaranOtomatisFragment fragment = (PengeluaranOtomatisFragment)fm.findFragmentById(R.id.frame_container);
+            fragment.notifyData();
         }
 
         if (navItemIndex == 2 && !WishlistFragment.isActive) {
@@ -831,8 +804,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
             radioGrupPeriode.check(periodeSaved);
             pilihanPeriode = saved;
             if (periodeSaved!=R.id.radio_custom){
-                milihDate1.setVisibility(View.GONE);
-                milihDate2.setVisibility(View.GONE);
+                milihDate.setVisibility(View.GONE);
             }
             cekBackground=true;
         }
@@ -944,9 +916,6 @@ public class MainActivity extends AppCompatActivity implements IconListener {
 
     }
 
-    public void munculHapus(){
-        backgroundHapus.setVisibility(View.VISIBLE);
-    }
 
     public void munculHapusAktivitas(AktivitasKeuanganDatabase aktivitasKeuanganDatabase){
         backgroundDeleteAktivitas.setVisibility(View.VISIBLE);
@@ -1118,6 +1087,37 @@ public class MainActivity extends AppCompatActivity implements IconListener {
         txtDataQuickButtonDelete.setText(quick.getNama());
         txtNominalQuickButtonDelete.setText(editRupiah(String.valueOf(quick.getHarga())));
         imgQuickButtonDelete.setImageResource(quick.getIcon());
+
+    }
+
+    public void munculHapusPengeluaranOtomatis(PengeluaranOtomatisDatabase pengeluaranOtomatisDatabase){
+        backgroundDeleteOtomatis.setVisibility(View.VISIBLE);
+
+        txtNamaOtomatis.setText(pengeluaranOtomatisDatabase.getNamaBarang());
+        txtNominalOtomatis.setText(editRupiah(String.valueOf(pengeluaranOtomatisDatabase.getHargaBarang())));
+
+        String jam, menit, tanggal;
+
+        if (pengeluaranOtomatisDatabase.getJam()<10){
+            jam = "0"+pengeluaranOtomatisDatabase.getJam();
+        }else {
+            jam = String.valueOf(pengeluaranOtomatisDatabase.getJam());
+        }
+
+        if (pengeluaranOtomatisDatabase.getMenit()<10){
+            menit = "0"+pengeluaranOtomatisDatabase.getMenit();
+        }else{
+            menit = String.valueOf(pengeluaranOtomatisDatabase.getMenit());
+        }
+
+        if (pengeluaranOtomatisDatabase.getTanggal()<10){
+            tanggal="0"+pengeluaranOtomatisDatabase.getTanggal();
+        }else{
+            tanggal=String.valueOf(pengeluaranOtomatisDatabase.getTanggal());
+        }
+
+
+        txtWaktuOtomatis.setText("Tanggal "+tanggal+" Jam "+jam+":"+menit);
 
     }
 }

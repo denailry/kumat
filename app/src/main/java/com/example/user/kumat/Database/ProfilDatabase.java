@@ -34,8 +34,6 @@ public class ProfilDatabase extends BaseModel {
     @Column
     boolean bukuHutang;
     @Column
-    int lvl;
-    @Column
     private Integer updateId;
 
     public Integer getUpdateId() {
@@ -44,14 +42,6 @@ public class ProfilDatabase extends BaseModel {
 
     public void setUpdateId(Integer updateId) {
         this.updateId = updateId;
-    }
-
-    public int getLvl() {
-        return lvl;
-    }
-
-    public void setLvl(int lvl) {
-        this.lvl = lvl;
     }
 
     public int getId() {

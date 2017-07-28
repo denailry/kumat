@@ -99,7 +99,7 @@ public class PengeluaranOtomatisFragment extends Fragment implements Pengeluaran
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         rvPengeluaranOtomatis.setLayoutManager(llm);
 
-        adapter = new PengeluaranOtomatisAdapter(listPengeluaranOtomatis,this);
+        adapter = new PengeluaranOtomatisAdapter(listPengeluaranOtomatis,this,getContext());
         rvPengeluaranOtomatis.setAdapter(adapter);
 
         callDataPengeluaranOtomatis();
@@ -244,7 +244,7 @@ public class PengeluaranOtomatisFragment extends Fragment implements Pengeluaran
     public void onClickDeleteOtomatis(PengeluaranOtomatisDatabase pengeluaranOtomatisDatabase) {
         this.pengeluaranOtomatisDatabase = pengeluaranOtomatisDatabase;
 
-        ((MainActivity)getActivity()).munculHapus();
+        ((MainActivity)getActivity()).munculHapusPengeluaranOtomatis(pengeluaranOtomatisDatabase);
 
     }
 
@@ -266,5 +266,9 @@ public class PengeluaranOtomatisFragment extends Fragment implements Pengeluaran
         Log.d("deleee", "onClickDeleteOtomatis");
 
         Toast.makeText(getContext(),"deleted",Toast.LENGTH_SHORT).show();
+    }
+
+    public void notifyData(){
+        adapter.notifyDataSetChanged();
     }
 }

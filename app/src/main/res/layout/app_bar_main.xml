@@ -31,11 +31,10 @@
 
     <include layout="@layout/pop_up_aktivitas"/>
 
-    <include layout="@layout/persetujuan_hapus"/>
-
     <include layout="@layout/delete_aktivitas"/>
     <include layout="@layout/add_photo_quick_button"/>
     <include layout="@layout/delete_quick_button"/>
+    <include layout="@layout/delete_pengaturan_otomatis"/>
 
 
 

@@ -22,7 +22,7 @@
         android:layout_centerVertical="true"
         android:textColor="@android:color/black"
         android:layout_marginLeft="15dp"
-        android:textSize="20sp"
+        android:textSize="17sp"
         android:id="@+id/txt_detail"/>
     <TextView
         android:layout_width="wrap_content"

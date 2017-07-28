@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.user.kumat.Fragment.QuickButtonFragment"
-    android:background="#f7f5f0">
+    android:background="#efede9">
 
 
 
@@ -106,8 +106,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="#dbfcf9"
-            android:layout_below="@+id/q"/>
+            android:background="#9df6f0" />
 
     </LinearLayout>
 
