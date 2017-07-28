@@ -60,7 +60,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
         final WishlistDatabase wishlist = listData.get(position);
         Bitmap image = wishlist.getImage();
         if(image == null) {
-            holder.ivIkon.setImageResource(R.drawable.icon_add);
+            holder.ivIkon.setImageResource(R.drawable.wishlist_create_add_image);
         } else {
             holder.ivIkon.setImageBitmap(image);
         }

@@ -59,6 +59,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/edit_nama_orang"
             android:layout_marginTop="5dp"
+            android:paddingLeft="@dimen/editTextMoneySpacing"
             android:hint="Nominal"
             android:id="@+id/edit_nominal_hutang"
             android:textColorHint="@android:color/black"
@@ -70,6 +71,19 @@
             android:textSize="13sp"
             android:inputType="textPersonName"
             android:text=""/>
+        <TextView
+            android:layout_alignLeft="@+id/edit_nominal_hutang"
+            android:layout_alignTop="@id/edit_nominal_hutang"
+            android:height="20dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp"
+            android:gravity="center"
+            android:textColor="@color/colorSecondaryBlack"
+            android:background="@color/colorBackgorundLightBrown"/>
         <Button
             android:layout_width="60dp"
             android:layout_height="60dp"

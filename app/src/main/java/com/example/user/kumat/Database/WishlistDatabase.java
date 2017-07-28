@@ -105,7 +105,10 @@ public class WishlistDatabase extends BaseModel {
             setPersentase();
             return true;
         } else {
+            Log.d("TEST",String.valueOf(this.id));
+            Log.d("TEST",String.valueOf(this.tabungan));
             this.tabungan = this.tabungan + amount;
+            Log.d("TEST",String.valueOf(this.tabungan));
             if(this.id != 1L) { //Bukan "Tabunganku"
                 WishlistDatabase tabunganku = new Select()
                         .from(WishlistDatabase.class)
@@ -132,8 +135,8 @@ public class WishlistDatabase extends BaseModel {
         if(isRequireSaldo) {
             this.amountFromSaldo = this.amountFromSaldo - amount;
         } else {
-            this.tabungan = this.tabungan - amount;
             if(this.id != 1L) { //Bukan "Tabunganku"
+                Log.d("TEST", "HAI-2");
                 this.amountFromTabunganku = this.amountFromTabunganku - amount;
             }
         }
@@ -153,7 +156,7 @@ public class WishlistDatabase extends BaseModel {
         if(target == 0) {
             this.persentase = tabungan.toString();
         } else {
-            Integer persentase = (this.tabungan *100)/this.target;
+            Integer persentase = (this.tabungan*100)/this.target;
             this.persentase = persentase.toString();
         }
     }
@@ -242,9 +245,9 @@ public class WishlistDatabase extends BaseModel {
                     .where(WishlistDatabase_Table.id.eq(1L))
                     .querySingle();
             if(amountFromTabunganku > 0) {
-                tabunganku.decTabungan(amountFromSaldo, false);
+                tabunganku.decTabungan(amountFromTabunganku, false);
             } else {
-                tabunganku.addTabungan(abs(amountFromSaldo), false);
+                tabunganku.addTabungan(abs(amountFromTabunganku), false);
             }
             tabunganku.save();
         }

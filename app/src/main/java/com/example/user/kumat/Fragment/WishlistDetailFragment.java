@@ -45,7 +45,7 @@ public class WishlistDetailFragment extends Fragment {
 
     private final int REQUEST_IMAGE_GET = 1;
 
-    private LinearLayout containerTarget;
+    private RelativeLayout cntTarget, cntPersentase;
     private RelativeLayout relativeLayout;
     private ImageView ivIkon;
     private TextView tvNama, tvTarget, tvTabungan, tvPersentase;
@@ -64,8 +64,9 @@ public class WishlistDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wishlist_detail, container, false);
 
-        containerTarget = (LinearLayout) view.findViewById(R.id.rl_target_persentase);
         relativeLayout = (RelativeLayout) view.findViewById(R.id.rl_fragment_wishlist_detail);
+        cntTarget = (RelativeLayout) view.findViewById(R.id.cnt_target);
+        cntPersentase = (RelativeLayout) view.findViewById(R.id.cnt_persentase);
         ivIkon = (ImageView) view.findViewById(R.id.iv_ikon);
         tvNama = (TextView) view.findViewById(R.id.tv_nama);
         tvTarget = (TextView) view.findViewById(R.id.tv_target);
@@ -76,10 +77,6 @@ public class WishlistDetailFragment extends Fragment {
         btnDelete = (Button) view.findViewById(R.id.btn_delete);
         btnSave = (Button) view.findViewById(R.id.btn_save);
         btnFinish = (Button) view. findViewById(R.id.btn_finish);
-
-        if(item.getTarget() == 0 || item.getTabungan() < item.getTarget()) {
-            btnFinish.setVisibility(View.GONE);
-        }
 
         return view;
     }
@@ -98,7 +95,7 @@ public class WishlistDetailFragment extends Fragment {
         });
         btnDelete.setOnClickListener(new ClickListener(DATA_DELETE));
         tvNama.setOnClickListener(new ClickListener(DATA_NAMA));
-        containerTarget.setOnClickListener(new ClickListener(DATA_TARGET));
+        cntTarget.setOnClickListener(new ClickListener(DATA_TARGET));
         btnMinus.setOnClickListener(new ClickListener(DATA_TABUNGAN_MINUS));
         btnPlus.setOnClickListener(new ClickListener(DATA_TABUNGAN_PLUS));
         btnSave.setOnClickListener(new ClickListener(DATA_SAVE));
@@ -132,15 +129,27 @@ public class WishlistDetailFragment extends Fragment {
     }
 
     private void refreshItem(WishlistDatabase item) {
+        this.item = item;
+
         tvNama.setText(item.getNama());
+        if(item.getTarget() == 0 || item.getTabungan() < item.getTarget()) {
+            Log.d("TEST", "GONE");
+            btnFinish.setVisibility(View.GONE);
+        } else {
+            Log.d("TEST", "VIS");
+            btnFinish.setVisibility(View.VISIBLE);
+        }
+
         if(item.getTarget() != 0) {
             tvTarget.setText(String.valueOf(item.getTarget()));
             tvPersentase.setText(item.getPersentase());
         }
+
         tvTabungan.setText(item.getTabungan().toString());
         if(item.getId() == 1) {
             btnDelete.setVisibility(View.GONE);
-            containerTarget.setVisibility(View.GONE);
+            cntTarget.setVisibility(View.GONE);
+            cntPersentase.setVisibility(View.GONE);
             ivIkon.setImageResource(R.drawable.wishlist_detail_tabunganku);
         } else {
             Bitmap image = item.getImage();

@@ -14,5 +14,5 @@
     <color name="btn_wishlist_delete">#ef5350</color>
     <color name="btn_wishlist_finish">#f9dd5e </color>
     <color name="colorBackgorundLightBrown">#ebe5db</color>
-
+    <color name="colorSecondaryBlack">#444444</color>
 </resources>

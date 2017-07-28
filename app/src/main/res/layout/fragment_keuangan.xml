@@ -59,6 +59,8 @@
         <EditText
             android:id="@+id/detail_harga"
             android:layout_width="180dp"
+            android:layout_height="37dp"
+            android:paddingLeft="@dimen/editTextMoneySpacing"
             android:textColorHint="@android:color/black"
             android:textColor="@android:color/black"
             android:textColorLink="@android:color/black"
@@ -66,13 +68,24 @@
             android:shadowColor="@android:color/black"
             android:backgroundTint="@android:color/black"
             android:textSize="13sp"
-            android:layout_height="37dp"
             android:ems="10"
             android:hint="Nominal Harga"
             android:inputType="number"
             android:layout_below="@+id/detail_nama"
-            android:layout_alignLeft="@+id/detail_nama"
-            android:layout_alignStart="@+id/detail_nama" />
+            android:layout_alignLeft="@+id/detail_nama" />
+        <TextView
+            android:layout_alignLeft="@+id/detail_harga"
+            android:layout_alignTop="@id/detail_harga"
+            android:height="20dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp"
+            android:gravity="center"
+            android:textColor="@color/colorSecondaryBlack"
+            android:background="@color/colorBackgorundLightBrown"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

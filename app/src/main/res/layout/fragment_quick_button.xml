@@ -43,6 +43,7 @@
             android:layout_marginTop="5dp"
             android:id="@+id/nominal_quick"
             android:hint="Nominal Harga"
+            android:paddingLeft="@dimen/editTextMoneySpacing"
             android:textColorHint="@android:color/black"
             android:textColor="@android:color/black"
             android:textColorLink="@android:color/black"
@@ -53,7 +54,19 @@
             android:layout_below="@+id/nama_quick"
             android:inputType="number"
             android:textSize="13sp"/>
-
+        <TextView
+            android:layout_alignLeft="@+id/nominal_quick"
+            android:layout_alignTop="@id/nominal_quick"
+            android:height="20dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp"
+            android:gravity="center"
+            android:textColor="@color/colorSecondaryBlack"
+            android:background="@color/colorBackgorundLightBrown"/>
     </RelativeLayout>
 
     <Button

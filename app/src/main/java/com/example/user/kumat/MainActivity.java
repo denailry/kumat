@@ -1041,10 +1041,9 @@ public class MainActivity extends AppCompatActivity implements IconListener {
         intent.putExtra("isOpenInTheDay", isOpenInTheDay);
         intent.putExtra("width", width);
         intent.putExtra("height", height);
-
         PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, -1,intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager am = (AlarmManager) MainActivity.this.getSystemService(ALARM_SERVICE);
-        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis()+86400000, AlarmManager.INTERVAL_DAY, pendingIntent);
+        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis()+/*86400000*/20000, AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 
     private void bonusGiver() {

@@ -78,16 +78,21 @@ public class WishlistFragment extends Fragment implements WishlistListener {
                         .from(WishlistDatabase.class)
                         .where(WishlistDatabase_Table.id.eq(1L))
                         .querySingle();
-                if(tabunganku == null) {
-                    tabunganku = new WishlistDatabase(1L, "Tabunganku", 0, 0, null);
-                    tabunganku.save();
-                }
                 onItemClick(tabunganku);
             }
         });
     }
 
     private ArrayList<WishlistDatabase> loadData() {
+        WishlistDatabase tabunganku = new Select()
+                .from(WishlistDatabase.class)
+                .where(WishlistDatabase_Table.id.eq(1L))
+                .querySingle();
+        if(tabunganku == null) {
+            tabunganku = new WishlistDatabase(1L, "Tabunganku", 0, 0, null);
+            tabunganku.save();
+        }
+
         List<WishlistDatabase> listData = new Select().from(WishlistDatabase.class).queryList();
         ArrayList<WishlistDatabase> dataSet = new ArrayList<>();
 

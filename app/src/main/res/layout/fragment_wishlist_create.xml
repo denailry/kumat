@@ -55,7 +55,7 @@
                 android:layout_below="@+id/edit_nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="30dp"
+                android:paddingLeft="@dimen/editTextMoneySpacing"
                 android:textColorHint="#777777"
                 android:textColor="@android:color/black"
                 android:textColorLink="@android:color/black"
@@ -67,16 +67,17 @@
                 android:hint="Target Tabungan"
                 android:inputType="number" />
             <TextView
-                android:layout_alignStart="@+id/edit_target"
+                android:layout_alignLeft="@+id/edit_target"
                 android:layout_alignTop="@id/edit_target"
                 android:height="20dp"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:layout_marginTop="7dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp"
                 android:gravity="center"
+                android:textColor="@color/colorSecondaryBlack"
                 android:background="@color/colorBackgorundLightBrown"/>
             <TextView
                 android:id="@+id/tv_tabungan"
@@ -84,7 +85,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="30dp"
+                android:paddingLeft="@dimen/editTextMoneySpacing"
                 android:textColorHint="#777777"
                 android:textColor="@android:color/black"
                 android:textColorLink="@android:color/black"
@@ -94,15 +95,16 @@
                 android:ems="10"
                 android:hint="Tabungan Awal" />
             <TextView
-                android:layout_alignStart="@+id/tv_tabungan"
+                android:layout_alignLeft="@+id/tv_tabungan"
                 android:layout_alignTop="@id/tv_tabungan"
                 android:height="20dp"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp"
                 android:gravity="center"
+                android:textColor="@color/colorSecondaryBlack"
                 android:background="@color/colorBackgorundLightBrown"/>
             <ImageView
                 android:layout_width="match_parent"
@@ -118,23 +120,19 @@
             android:layout_marginTop="@dimen/buttonTopSpaceWishBox">
             <Button
                 android:id="@+id/btn_cancel"
+                android:background="@drawable/btn_cancel"
                 android:layout_width="70dp"
                 android:layout_height="25dp"
-                android:text="CANCEL"
                 android:layout_marginTop="3dp"
-                android:background="@color/btn_wishlist_delete"
-                android:textSize="12sp"
                 android:layout_marginRight="30dp"/>
             <Button
                 android:id="@+id/btn_save"
+                android:background="@drawable/btn_save"
                 android:layout_width="@dimen/btn_wishlist_width_normal"
                 android:layout_height="@dimen/btn_wishlist_height_normal"
-                android:text="save"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/tv_tabungan"
-                android:layout_marginTop="3dp"
-                android:background="@color/btn_wishlist_save"
-                android:textSize="12sp"/>
+                android:layout_marginTop="3dp"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

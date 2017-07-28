@@ -73,7 +73,21 @@
             android:inputType="number"
             android:layout_below="@+id/detail_nama"
             android:layout_alignLeft="@+id/detail_nama"
-            android:layout_alignStart="@+id/detail_nama" />
+            android:layout_alignStart="@+id/detail_nama"
+            android:paddingLeft="@dimen/editTextMoneySpacing"/>
+        <TextView
+            android:layout_alignLeft="@+id/detail_harga"
+            android:layout_alignTop="@id/detail_harga"
+            android:height="20dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp"
+            android:gravity="center"
+            android:textColor="@color/colorSecondaryBlack"
+            android:background="@color/colorBackgorundLightBrown"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -1,7 +1,7 @@
 package com.example.user.kumat.Fragment;
 
+import android.media.Image;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -35,12 +36,13 @@ public class WishlistChangeFragment extends Fragment {
     private final int FROM_SALDO = 1;
     private final int FROM_ELSE = 2;
 
-    private LinearLayout llDelete, llNonDelete;
-    private RelativeLayout relativeLayout;
-    private TextView tvTitle, tvInput;
-    private EditText etInput;
-    private Button btnSaveDelete, btnSaveNonDelete, btnSave;
+    private LinearLayout llDelete, llNonDelete, llTarget, llNama;
+    private RelativeLayout relativeLayout, cntChoice;
+    private TextView tvTitle, tvInput, tvChoice;
+    private EditText etNama, etTarget;
+    private Button btnSave, btnCancel;
     private ImageButton btnFromSaldo, btnFromElse;
+
     private int dataId, viewId;
     private WishlistDatabase item;
     private OnItemSave listener;
@@ -66,7 +68,9 @@ public class WishlistChangeFragment extends Fragment {
 
         if(dataId == 1 || dataId == 2) {
             view = inflater.inflate(R.layout.fragment_wishlist_change_1, container, false);
-            btnSave = (Button) view.findViewById(R.id.btn_save);
+            llTarget = (LinearLayout) view.findViewById(R.id.ll_target);
+            llNama = (LinearLayout) view.findViewById(R.id.ll_nama);
+            etTarget = (EditText) view.findViewById(R.id.edit_target);
             viewId = 1;
         } else {
             view = inflater.inflate(R.layout.fragment_wishlist_change_2, container, false);
@@ -74,16 +78,17 @@ public class WishlistChangeFragment extends Fragment {
             btnFromElse = (ImageButton) view.findViewById(R.id.ib_setoran);
             llDelete = (LinearLayout) view.findViewById(R.id.ll_delete);
             llNonDelete = (LinearLayout) view.findViewById(R.id.ll_non_delete);
-            btnSaveNonDelete = (Button) view.findViewById(R.id.btn_save_1);
-            btnSaveDelete = (Button) view.findViewById(R.id.btn_save_2);
-
+            cntChoice = (RelativeLayout) view.findViewById(R.id.cnt_choice);
             viewId = 2;
         }
 
         relativeLayout = (RelativeLayout) view.findViewById(R.id.rl_fragment_wishlist_change_text);
         tvTitle = (TextView) view.findViewById(R.id.tv_title);
         tvInput = (TextView) view.findViewById(R.id.tv_input);
-        etInput = (EditText) view.findViewById(R.id.et_input);
+        tvChoice = (TextView) view.findViewById(R.id.tv_choice);
+        etNama = (EditText) view.findViewById(R.id.et_input);
+        btnSave = (Button) view.findViewById(R.id.btn_save);
+        btnCancel = (Button) view.findViewById(R.id.btn_cancel);
 
         return view;
     }
@@ -93,57 +98,72 @@ public class WishlistChangeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         String title = "";
+        String strChoice = "";
         int inputType = 0;
-        if(dataId == 1) {
-            title = "CHANGE NAMA";
+        if (dataId == 1) {
+            title = "Ubah Nama";
             inputType = TYPE_CLASS_TEXT;
-        } else if(dataId == 2) {
-            title = "CHANGE TARGET";
+        } else if (dataId == 2) {
+            title = "Ubah Target";
             inputType = TYPE_CLASS_NUMBER;
-        } else if(dataId == 3) {
-            title = "TAMBAH TABUNGAN";
+        } else if (dataId == 3) {
+            title = "Tambah Tabungan";
+            strChoice = "Ambil uang dari:";
             inputType = TYPE_CLASS_NUMBER;
-        } else if(dataId == 4) {
-            title = "KURANG TABUNGAN";
+        } else if (dataId == 4) {
+            title = "Kurangi Tabungan";
+            strChoice = "Pindahkan uang ke:";
             inputType = TYPE_CLASS_NUMBER;
         } else {
-            title = "HAPUS TABUNGAN";
+            title = "Hapus Tabungan";
             tvInput.setText(String.valueOf(item.getTabungan()));
         }
 
         tvTitle.setText(title);
-        etInput.setInputType(inputType);
+        etNama.setInputType(inputType);
 
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {}
+            public void onClick(View view) {
+            }
         });
 
-        if(viewId == 1) {
-            btnSave.setOnClickListener(new ClickListener(ClickListener.BTN_SAVE));
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
+        btnSave.setOnClickListener(new ClickListener());
+        if (viewId == 1) {
+            if(dataId == 1) {
+                llTarget.setVisibility(View.GONE);
+            } else {
+                llNama.setVisibility(View.GONE);
+            }
         } else {
             choice = FROM_SALDO;
+            tvChoice.setText(strChoice);
             if(item.getId() == 1) {
                 btnFromElse.setVisibility(View.GONE);
+                cntChoice.setVisibility(View.GONE);
             }
+
             btnFromSaldo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(choice == 2) {
-                        btnFromSaldo.setImageResource(R.drawable.ib_saldo);
-                        btnFromElse.setImageResource(R.drawable.ib_setoran_non);
-                        choice = 1;
-                    }
+                    choice = 1;
+                    btnFromSaldo.setImageResource(R.drawable.wishlist_saldo_clicked);
+                    btnFromElse.setImageResource(R.drawable.wishlist_tabunganku_unclicked);
                 }
             });
             btnFromElse.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(choice == 1) {
-                        btnFromElse.setImageResource(R.drawable.ib_setoran);
-                        btnFromSaldo.setImageResource(R.drawable.ib_saldo_non);
-                        choice = 2;
-                    }
+                    choice = 2;
+                    btnFromElse.setImageResource(R.drawable.wishlist_tabunganku_clicked);
+                    btnFromSaldo.setImageResource(R.drawable.wishlist_saldo_unclicked);
                 }
             });
 
@@ -152,11 +172,7 @@ public class WishlistChangeFragment extends Fragment {
             } else {
                 llDelete.setVisibility(View.GONE);
             }
-
-            btnSaveNonDelete.setOnClickListener(new ClickListener(ClickListener.BTN_SAVE_NON_DELETE));
-            btnSaveDelete.setOnClickListener(new ClickListener(ClickListener.BTN_SAVE_DELETE));
         }
-
     }
 
     private class ClickListener implements View.OnClickListener {
@@ -164,16 +180,10 @@ public class WishlistChangeFragment extends Fragment {
         static final int BTN_SAVE_NON_DELETE = 1;
         static final int BTN_SAVE_DELETE = 2;
 
-        int buttonId;
-
-        public ClickListener(int buttonId) {
-            this.buttonId = buttonId;
-        }
-
         @Override
         public void onClick(View view) {
-            if(buttonId == BTN_SAVE || buttonId == BTN_SAVE_NON_DELETE) {
-                String strInput = etInput.getText().toString();
+            if(dataId != DATA_DELETE) {
+                String strInput = etNama.getText().toString();
                 Integer intInput = 0;
                 try {
                     if(strInput.trim().length() > 0) {
@@ -185,14 +195,25 @@ public class WishlistChangeFragment extends Fragment {
                 if(dataId == DATA_NAMA) {
                     item.setNama(strInput);
                 } else if(dataId == DATA_TARGET) {
+                    String strTarget = etTarget.getText().toString();
+                    try {
+                        if(strTarget.trim().length() > 0) {
+                            intInput = Integer.parseInt(strTarget);
+                        }
+                    } catch (NumberFormatException e) {
+                        Log.e(getClass().getSimpleName(), "Trying to convert non-numeric string to integer.");
+                    }
                     item.setTarget(intInput);
+                    listener.onSave(item);
                 } else if(dataId == DATA_TABUNGAN_PLUS) {
                     if(choice == FROM_SALDO) {
                         if(!item.addTabungan(intInput, true)) {
                             Toast.makeText(getContext(), "Invalid Action", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        item.addTabungan(intInput, false);
+                        if(!item.addTabungan(intInput, false)) {
+                            Toast.makeText(getContext(), "Invalid Action", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                 } else if(dataId == DATA_TABUNGAN_MINUS) {
