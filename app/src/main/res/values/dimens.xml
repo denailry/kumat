@@ -9,10 +9,26 @@
     <dimen name="btn_wishlist_height_normal">25dp</dimen>
     <dimen name="paddingVerticalWishBox">16dp</dimen>
     <dimen name="paddingHorizontalWishBox">20dp</dimen>
+    <dimen name="paddingHorizontalWishBox500">30dp</dimen>
     <dimen name="widthWishBox">270dp</dimen>
-    <dimen name="titleWishBox">20sp</dimen>
-    <dimen name="titleBotSpaceWishBox">10dp</dimen>
+    <dimen name="widthWishBox500">420dp</dimen>
+    <dimen name="wishLargeText">20sp</dimen>
+    <dimen name="wishLargeText500">27sp</dimen>
+    <dimen name="wishMediumLargetText500">23sp</dimen>
+    <dimen name="wishMediumText500">19sp</dimen>
+    <dimen name="wishSmallMediumText500">17.5sp</dimen>
+    <dimen name="wishSmallText500">16sp</dimen>
+    <dimen name="wishTitleBotSpacing">10dp</dimen>
+    <dimen name="wishTitleBotSpacing500">20dp</dimen>
     <dimen name="buttonTopSpaceWishBox">50dp</dimen>
     <dimen name="buttonHorizontalSpacingWishBox">7dp</dimen>
     <dimen name="editTextMoneySpacing">30dp</dimen>
+    <dimen name="editTextMoneySpacing500">35dp</dimen>
+
+    <dimen name="btn_wishlist_width_normal500">100dp</dimen>
+    <dimen name="btn_wishlist_height_normal500">36dp</dimen>
+    <dimen name="buttonHorizontalSpacingWishBox500">15dp</dimen>
+    <dimen name="widthWishIcon500">350dp</dimen>
+    <dimen name="heightWishIcon500">270dp</dimen>
+    <dimen name="btnTextSize500">12sp</dimen>
 </resources>

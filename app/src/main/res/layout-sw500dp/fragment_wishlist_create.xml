@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,7 +10,7 @@
     android:background="#AA000000">
     <LinearLayout
         android:id="@+id/top_container"
-        android:layout_width="@dimen/widthWishBox"
+        android:layout_width="@dimen/widthWishBox500"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:paddingTop="@dimen/paddingVerticalWishBox"
@@ -23,29 +24,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Wishlist"
-            android:textSize="@dimen/wishLargeText"
+            android:textSize="@dimen/wishLargeText500"
             android:textStyle="bold"
-            android:layout_marginBottom="@dimen/wishTitleBotSpacing"/>
+            android:layout_marginBottom="@dimen/wishTitleBotSpacing500"/>
         <ImageView
             android:id="@+id/iv_ikon_tabungan"
-            android:layout_width="200dp"
-            android:layout_height="150dp"
+            android:layout_width="@dimen/widthWishIcon500"
+            android:layout_height="@dimen/heightWishIcon500"
             android:src="@drawable/wishlist_create_add_image"/>
         <RelativeLayout
-            android:layout_width="200dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/edit_nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="29dp"
                 android:textColorHint="#777777"
                 android:textColor="@android:color/black"
                 android:textColorLink="@android:color/black"
                 android:textColorHighlight="@android:color/black"
                 android:shadowColor="@android:color/black"
                 android:backgroundTint="@android:color/black"
-                android:textSize="13sp"
+                android:textSize="@dimen/wishMediumText500"
                 android:ems="10"
                 android:hint="Nama Wishlist"
                 android:inputType="textPersonName"
@@ -55,14 +56,14 @@
                 android:layout_below="@+id/edit_nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/editTextMoneySpacing"
+                android:paddingLeft="@dimen/editTextMoneySpacing500"
                 android:textColorHint="#777777"
                 android:textColor="@android:color/black"
                 android:textColorLink="@android:color/black"
                 android:textColorHighlight="@android:color/black"
                 android:shadowColor="@android:color/black"
                 android:backgroundTint="@android:color/black"
-                android:textSize="13sp"
+                android:textSize="@dimen/wishMediumText500"
                 android:ems="10"
                 android:hint="Target Tabungan"
                 android:inputType="number" />
@@ -76,6 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp"
+                android:textSize="@dimen/wishMediumText500"
                 android:gravity="center"
                 android:textColor="@color/colorSecondaryBlack"
                 android:background="@color/colorBackgorundLightBrown"/>
@@ -85,13 +87,13 @@
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/editTextMoneySpacing"
+                android:paddingLeft="@dimen/editTextMoneySpacing500"
                 android:textColorHint="#777777"
                 android:textColor="@android:color/black"
                 android:textColorLink="@android:color/black"
                 android:textColorHighlight="@android:color/black"
                 android:shadowColor="@android:color/black"
-                android:textSize="13sp"
+                android:textSize="@dimen/wishMediumText500"
                 android:ems="10"
                 android:hint="Tabungan Awal" />
             <TextView
@@ -103,6 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp"
+                android:textSize="@dimen/wishMediumText500"
                 android:gravity="center"
                 android:textColor="@color/colorSecondaryBlack"
                 android:background="@color/colorBackgorundLightBrown"/>
@@ -121,19 +124,18 @@
             <Button
                 android:id="@+id/btn_cancel"
                 android:background="@drawable/btn_cancel"
-                android:layout_width="70dp"
-                android:layout_height="25dp"
+                android:layout_width="@dimen/btn_wishlist_width_normal500"
+                android:layout_height="@dimen/btn_wishlist_height_normal500"
                 android:layout_marginTop="3dp"
-                android:layout_marginRight="30dp"/>
+                android:layout_marginRight="30dp" />
             <Button
                 android:id="@+id/btn_save"
                 android:background="@drawable/btn_save"
-                android:layout_width="@dimen/btn_wishlist_width_normal"
-                android:layout_height="@dimen/btn_wishlist_height_normal"
+                android:layout_width="@dimen/btn_wishlist_width_normal500"
+                android:layout_height="@dimen/btn_wishlist_height_normal500"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/tv_tabungan"
                 android:layout_marginTop="3dp"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
-
