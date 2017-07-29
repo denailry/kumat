@@ -15,10 +15,11 @@ public class BubleReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         int width = intent.getIntExtra("width", 0);
         int height = intent.getIntExtra("height", 0);
+        int receivedTimeId = intent.getIntExtra("timeId", 0);
 
-        boolean isOpenInTheDay = intent.getBooleanExtra("isOpenInTheDay", false);
+        int currentTimeId = IdGen.generateTimeId();
 
-        if(!isOpenInTheDay) {
+        if(receivedTimeId != currentTimeId) {
             try {
                 Intent bubbleIntent = new Intent(context, Bubble.class);
                 bubbleIntent.putExtra("width", width);

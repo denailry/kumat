@@ -816,15 +816,11 @@ public class MainActivity extends AppCompatActivity implements IconListener {
         setUpHeader();
         setHariini();
         setNotifHarian();
-        bonusGiver();
-
-        Log.d("resem", "onResume: ");
     }
 
     @Override
     public void onPause(){
         super.onPause();
-        Log.d("resem", "onPause: ");
     }
 
     public void removeD(int id){
@@ -837,13 +833,9 @@ public class MainActivity extends AppCompatActivity implements IconListener {
         this.minute=minute;
         showDialog(id);
 
-        Log.d("dialCuy", "showDialCuy: "+hour+", "+minute);
-
     }
 
     public void setNotif(PengeluaranOtomatisDatabase pengeluaranOtomatis){
-        Log.d("NOTIF-WOY", "TES");
-
         Calendar calendar = new GregorianCalendar();
 
         int month = thisMonth;
@@ -891,8 +883,6 @@ public class MainActivity extends AppCompatActivity implements IconListener {
         intent.putExtra("nama",pengeluaranOtomatis.getNamaBarang());
         intent.putExtra("harga",pengeluaranOtomatis.getHargaBarang());
         intent.putExtra("tanggal",pengeluaranOtomatis.getTanggal());
-        Log.d("NOTIF-WOY", "SENT");
-        Log.d("NOTIF-WOY", String.valueOf(pengeluaranOtomatis.getId()+","+month+","+year+","+pengeluaranOtomatis.getTanggal())+","+pengeluaranOtomatis.getJam()+","+pengeluaranOtomatis.getMenit());
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, pengeluaranOtomatis.getId(),intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -985,8 +975,6 @@ public class MainActivity extends AppCompatActivity implements IconListener {
     }
 
     public void setNotifHarian(){
-        boolean isOpenInTheDay = false;
-
         Calendar calendar = new GregorianCalendar();
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -994,26 +982,6 @@ public class MainActivity extends AppCompatActivity implements IconListener {
         final int height = displayMetrics.heightPixels;
         final int width = displayMetrics.widthPixels;
 
-        ProfilDatabase profil = new Select()
-                .from(ProfilDatabase.class)
-                .where(ProfilDatabase_Table.Username.eq(usernameAktif))
-                .querySingle();
-        if(profil != null) {
-            if(profil.getUpdateId() == null || profil.getUpdateId() != IdGen.generateTimeId()) {
-                isOpenInTheDay = false;
-            }
-        }
-
-        Intent intent = new Intent(getApplicationContext(),BubleReceiver.class);
-        intent.putExtra("isOpenInTheDay", isOpenInTheDay);
-        intent.putExtra("width", width);
-        intent.putExtra("height", height);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, -1,intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager am = (AlarmManager) MainActivity.this.getSystemService(ALARM_SERVICE);
-        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis()+/*86400000*/20000, AlarmManager.INTERVAL_DAY, pendingIntent);
-    }
-
-    private void bonusGiver() {
         ProfilDatabase profil = new Select()
                 .from(ProfilDatabase.class)
                 .where(ProfilDatabase_Table.Username.eq(this.usernameAktif))
@@ -1028,6 +996,14 @@ public class MainActivity extends AppCompatActivity implements IconListener {
                 showKoinDialog();
             }
         }
+
+        Intent intent = new Intent(getApplicationContext(),BubleReceiver.class);
+        intent.putExtra("width", width);
+        intent.putExtra("height", height);
+        intent.putExtra("timeId", updateId);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, -1,intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager am = (AlarmManager) MainActivity.this.getSystemService(ALARM_SERVICE);
+        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis()+86400000, AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 
     public void munculAddPhotoIcon(){
