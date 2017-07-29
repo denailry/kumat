@@ -33,6 +33,7 @@ import com.raizlabs.android.dbflow.sql.language.Select;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import static android.content.Context.ALARM_SERVICE;
@@ -205,7 +206,7 @@ public class PengeluaranOtomatisFragment extends Fragment implements Pengeluaran
 
     private void setHaridanJam() {
 
-        calendar = Calendar.getInstance();
+        calendar = new GregorianCalendar();
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         minute = calendar.get(Calendar.MINUTE);
 

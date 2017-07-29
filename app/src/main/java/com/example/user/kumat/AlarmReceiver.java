@@ -5,7 +5,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.icu.util.Calendar;
+import java.util.Calendar;
 import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
@@ -14,6 +14,7 @@ import com.example.user.kumat.Database.SaldoDatabase;
 import com.example.user.kumat.Database.SaldoDatabase_Table;
 import com.raizlabs.android.dbflow.sql.language.Select;
 
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         Log.d("NOTIF-WOY", "RECEIVE");
-        Calendar calendar =Calendar.getInstance();
+        Calendar calendar = new GregorianCalendar();
         int month = calendar.get(Calendar.MONTH);
         int year  = calendar.get(Calendar.YEAR);
         int thisDay = calendar.get(Calendar.DAY_OF_MONTH);

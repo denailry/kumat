@@ -6,7 +6,6 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.icu.util.Calendar;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -18,6 +17,8 @@ import com.example.user.kumat.Database.QuickButtonDatabase_Table;
 import com.example.user.kumat.Database.SaldoDatabase;
 import com.example.user.kumat.Database.SaldoDatabase_Table;
 import com.raizlabs.android.dbflow.sql.language.Select;
+
+import java.util.GregorianCalendar;
 
 /**
  * Created by User on 27/07/2017.
@@ -82,10 +83,10 @@ public class MyWidgetProvider extends AppWidgetProvider {
             Toast.makeText(context, "Nominal melebihi jumlah saldo", Toast.LENGTH_SHORT).show();
         }else{
 
-            Calendar calendar = Calendar.getInstance();
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-            int month = calendar.get(Calendar.MONTH);
-            int year = calendar.get(Calendar.YEAR);
+            java.util.Calendar calendar = new GregorianCalendar();
+            int day = calendar.get(calendar.DAY_OF_MONTH);
+            int month = calendar.get(calendar.MONTH);
+            int year = calendar.get(calendar.YEAR);
 
             AktivitasKeuanganDatabase aktivitasKeuangan = new AktivitasKeuanganDatabase();
             aktivitasKeuangan.setId(dataSaldo.getIndex());

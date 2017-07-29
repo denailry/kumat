@@ -1,7 +1,5 @@
 package com.example.user.kumat.Fragment;
 
-
-import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
@@ -29,6 +27,7 @@ import com.example.user.kumat.Database.ProfilDatabase_Table;
 import com.example.user.kumat.Database.SaldoDatabase;
 import com.example.user.kumat.Database.SaldoDatabase_Table;
 import com.example.user.kumat.Database.ShopDatabase;
+import com.example.user.kumat.IdGen;
 import com.example.user.kumat.Listener.BukuHutangListener;
 import com.example.user.kumat.MainActivity;
 import com.example.user.kumat.R;
@@ -98,9 +97,13 @@ public class BukuHutangFragment extends Fragment implements BukuHutangListener{
         
         cekSudahBeli();
 
-        thisDay = ((MainActivity)getActivity()).thisDay;
-        thisMonth = ((MainActivity)getActivity()).thisMonth;
-        thisYear = ((MainActivity)getActivity()).thisYear;
+//        thisDay = ((MainActivity)getActivity()).thisDay;
+//        thisMonth = ((MainActivity)getActivity()).thisMonth;
+//        thisYear = ((MainActivity)getActivity()).thisYear;
+
+        thisDay = parseDay(IdGen.generateTimeId());
+        thisMonth = parseMonth(IdGen.generateTimeId());
+        thisYear = parseYear(IdGen.generateTimeId());
 
         rvListHutang.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
@@ -393,5 +396,28 @@ public class BukuHutangFragment extends Fragment implements BukuHutangListener{
 
     }
 
+    private int parseDay(long timeId) {
+        long x = timeId % 10;
+        timeId = timeId / 10;
+        x = x  + (timeId % 10) * 10;
 
+        return (int) x;
+    }
+
+    private int parseMonth(long timeId) {
+        timeId = timeId/100;
+        long x = timeId % 10;
+        timeId = timeId/10;
+        x = x + (timeId % 10) * 10;
+
+        return (int) x;
+    }
+
+    private int parseYear(long timeId) {
+        timeId = timeId/10000;
+
+        long x = timeId;
+
+        return (int) x;
+    }
 }

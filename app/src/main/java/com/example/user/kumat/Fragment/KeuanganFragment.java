@@ -38,6 +38,7 @@ import com.raizlabs.android.dbflow.sql.language.Select;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 
@@ -176,7 +177,7 @@ public class KeuanganFragment extends Fragment implements QuickButtonListener{
     }
 
     private void setHariIni() {
-        calendar=Calendar.getInstance();
+        calendar = new GregorianCalendar();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);

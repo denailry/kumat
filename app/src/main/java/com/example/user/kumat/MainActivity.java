@@ -3,17 +3,11 @@ package com.example.user.kumat;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.icu.util.Calendar;
-import android.net.Uri;
+import java.util.Calendar;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.IdRes;
@@ -26,7 +20,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -40,7 +33,6 @@ import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -48,7 +40,6 @@ import android.widget.Toast;
 import com.example.user.kumat.Adapter.IconAdapter;
 import com.example.user.kumat.Database.AktivitasKeuanganDatabase;
 import com.example.user.kumat.Database.PengeluaranOtomatisDatabase;
-import com.example.user.kumat.Database.PengeluaranOtomatisDatabase_Table;
 import com.example.user.kumat.Database.ProfilDatabase;
 import com.example.user.kumat.Database.ProfilDatabase_Table;
 import com.example.user.kumat.Database.QuickButtonDatabase;
@@ -60,12 +51,12 @@ import com.example.user.kumat.Fragment.PengeluaranOtomatisFragment;
 import com.example.user.kumat.Fragment.QuickButtonFragment;
 import com.example.user.kumat.Fragment.WishlistFragment;
 import com.example.user.kumat.Listener.IconListener;
-import com.raizlabs.android.dbflow.annotation.OneToMany;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.sql.language.Select;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -146,6 +137,8 @@ public class MainActivity extends AppCompatActivity implements IconListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.d("WAKTU", String.valueOf(IdGen.generateTimeId()));
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -412,7 +405,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
     }
 
     private void setHariini() {
-        calendar= Calendar.getInstance();
+        calendar= new GregorianCalendar();
         thisYear = calendar.get(java.util.Calendar.YEAR);
         thisMonth = calendar.get(java.util.Calendar.MONTH);
         thisDay = calendar.get(java.util.Calendar.DAY_OF_MONTH);
@@ -849,7 +842,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
     public void setNotif(PengeluaranOtomatisDatabase pengeluaranOtomatis){
         Log.d("NOTIF-WOY", "TES");
 
-        calendar = Calendar.getInstance();
+        Calendar calendar = new GregorianCalendar();
 
         int month = thisMonth;
         int year = thisYear;
@@ -992,7 +985,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
     public void setNotifHarian(){
         boolean isOpenInTheDay = false;
 
-        Calendar calendar = Calendar.getInstance();
+        Calendar calendar = new GregorianCalendar();
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         MainActivity.this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
