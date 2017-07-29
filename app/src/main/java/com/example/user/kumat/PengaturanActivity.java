@@ -1,5 +1,6 @@
 package com.example.user.kumat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -28,6 +29,7 @@ public class PengaturanActivity extends AppCompatActivity {
             }
         });
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){

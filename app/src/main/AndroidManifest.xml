@@ -3,7 +3,7 @@
     package="com.example.user.kumat">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -32,31 +32,28 @@
 
         <receiver android:name=".AlarmReceiver" />
 
-        <activity android:name=".ProfilActivity"></activity>
+        <activity android:name=".ProfilActivity" />
 
-        <receiver android:name=".MyWidgetProvider" >
-
-            <intent-filter >
-
+        <receiver android:name=".MyWidgetProvider">
+            <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-
             </intent-filter>
 
             <meta-data
-
                 android:name="android.appwidget.provider"
-
                 android:resource="@xml/widget_info" />
-
         </receiver>
 
-        <service android:name=".ListViewWidgetService"
-
+        <service
+            android:name=".ListViewWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-        <receiver android:name=".BubleReceiver"/>
-        <service android:name=".Bubble"/>
+        <receiver android:name=".BubleReceiver" />
 
+        <service android:name=".Bubble" />
+
+        <activity android:name=".CreditActivity" />
+        <activity android:name=".IklanActivity"></activity>
     </application>
 
 </manifest>

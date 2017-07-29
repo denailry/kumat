@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="35dp"
     android:id="@+id/backgroud_list"
     android:layout_marginBottom="5dp">
 
@@ -24,26 +24,26 @@
         android:layout_marginLeft="10dp"
         android:textSize="13sp"
         android:id="@+id/txt_detail"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="27-11-2016"
-        android:textSize="13sp"
+        android:textSize="11sp"
         android:textColor="@android:color/black"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="20dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="4dp"
         android:id="@+id/txt_tanggal_detail"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="10000"
-        android:textSize="13sp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
+        android:textSize="11sp"
         android:textColor="@android:color/black"
-        android:layout_below="@+id/txt_tanggal_detail"
-        android:layout_alignLeft="@+id/txt_tanggal_detail"
-        android:id="@+id/txt_harga_detail" />
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/txt_tanggal_detail"
+        android:id="@+id/txt_harga_detail"
+        android:layout_marginRight="8dp"/>
 
 </RelativeLayout>
