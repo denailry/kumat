@@ -91,7 +91,7 @@ public class MyWidgetProvider extends AppWidgetProvider {
             AktivitasKeuanganDatabase aktivitasKeuangan = new AktivitasKeuanganDatabase();
             aktivitasKeuangan.setId(dataSaldo.getIndex());
             aktivitasKeuangan.setNamaBarang(quick.getNama());
-            aktivitasKeuangan.setHargaBarang(hargaBarang);
+            aktivitasKeuangan.setHargaBarang(hargaBarang); 
             aktivitasKeuangan.setTipe(0);
             aktivitasKeuangan.setTanggal(day);
             aktivitasKeuangan.setBulan(month+1);

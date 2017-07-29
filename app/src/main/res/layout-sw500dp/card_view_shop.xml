@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="160dp"
+    android:layout_width="270dp"
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="4dp"
+        android:layout_margin="10dp"
         android:id="@+id/card_shop"
-        app:cardCornerRadius="13dp">
+        app:cardCornerRadius="18dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -23,19 +23,19 @@
                 android:textColor="@android:color/black"
                 android:id="@+id/txt_judul_shop"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="15dp"
                 android:textStyle="bold"
-                android:textSize="10sp"/>
+                android:textSize="16sp"/>
 
             <ImageView
-                android:layout_width="70dp"
+                android:layout_width="100dp"
                 android:layout_below="@+id/txt_judul_shop"
-                android:layout_height="70dp"
+                android:layout_height="100dp"
                 android:src="@drawable/icon_add"
                 android:scaleType="fitXY"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="17dp"
                 android:id="@+id/img_foto_shop"/>
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -44,8 +44,8 @@
                 android:layout_centerHorizontal="true"
                 android:id="@+id/rel_shop">
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/kumat_koin"
                     android:scaleType="fitXY"
                     android:id="@+id/txt_tipe_koin" />
@@ -56,20 +56,20 @@
                     android:layout_toRightOf="@+id/txt_tipe_koin"
                     android:layout_centerVertical="true"
                     android:textColor="@android:color/black"
-                    android:layout_marginLeft="8dp"
-                    android:textSize="16sp"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="22sp"
                     android:textStyle="bold"
                     android:id="@+id/koin_shop"/>
             </RelativeLayout>
             <Button
-                android:layout_width="80dp"
-                android:layout_height="40dp"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
                 android:layout_below="@+id/rel_shop"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:text="beli"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:id="@+id/btn_beli"/>
 
 

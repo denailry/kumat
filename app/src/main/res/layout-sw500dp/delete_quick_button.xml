@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#59000000"
+    android:id="@+id/background_delete_quick">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/shape_aktivitas"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/icon_add"
+            android:id="@+id/img_icon_delete_quick"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:id="@+id/txt_nama_delete_quick"
+            android:layout_alignLeft="@+id/view3"
+            android:layout_below="@+id/img_icon_delete_quick"
+            android:text="parkiran"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"/>
+        <View
+            android:layout_width="190dp"
+            android:id="@id/view3"
+            android:layout_height="8dp"
+            android:background="#b7b7b7"
+            android:layout_below="@+id/txt_nama_delete_quick"
+            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/view3"
+            android:text="Rp 5.000,-"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:layout_alignLeft="@+id/view4"
+            android:id="@+id/txt_nominal_delete_quick"/>
+        <View
+            android:layout_width="190dp"
+            android:layout_height="8dp"
+            android:background="#b7b7b7"
+            android:layout_below="@+id/txt_nominal_delete_quick"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/view4"/>
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="48dp"
+            android:background="#f05d65"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:text="Delete"
+            android:textSize="18sp"
+            android:textAllCaps="false"
+            android:id="@+id/btn_delete_quick"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

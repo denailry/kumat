@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#59000000"
+    android:id="@+id/background_delete_otomatis">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/shape_aktivitas"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parkir"
+            android:textColor="@android:color/black"
+            android:layout_alignLeft="@+id/vieww"
+            android:layout_marginTop="25dp"
+            android:textSize="20sp"
+            android:id="@+id/txt_detail_delete_otomatis"/>
+        <View
+            android:layout_width="190dp"
+            android:layout_height="8dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/txt_detail_delete_otomatis"
+            android:background="#b7b7b7"
+            android:id="@+id/vieww"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp 1.000.000,-"
+            android:textColor="@android:color/black"
+            android:layout_alignLeft="@+id/viewww"
+            android:layout_marginTop="25dp"
+            android:layout_below="@id/vieww"
+            android:textSize="20sp"
+            android:id="@+id/txt_harga_delete_otomatis"/>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            android:layout_alignLeft="@+id/vieww"
+            android:layout_alignRight="@+id/vieww"
+            android:layout_below="@+id/txt_harga_delete_otomatis"
+            android:background="#b7b7b7"
+            android:id="@+id/viewww"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanggal 27 jam 03:21"
+            android:textColor="@android:color/black"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/viewww"
+            android:textSize="20sp"
+            android:id="@+id/waktu_delete_otomatis"/>
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:text="Delete"
+            android:background="#f05d65"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:id="@+id/btn_delete_detail_otomatis"
+            android:textSize="18sp"
+            android:textAllCaps="false"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,20 +13,20 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:id="@+id/relquick1"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="50dp">
 
         <ImageView
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:src="@drawable/icon_add"
             android:scaleType="fitXY"
             android:id="@+id/img_add_photo"
             android:layout_alignParentLeft="true"
-            android:layout_marginBottom="13dp"/>
+            android:layout_marginBottom="20dp"/>
         <EditText
-            android:layout_width="170dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="6dp"
+            android:layout_width="210dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/nama_quick"
             android:hint="Nama Barang"
             android:textColorHint="@android:color/black"
@@ -35,12 +36,12 @@
             android:shadowColor="@android:color/black"
             android:backgroundTint="@android:color/black"
             android:inputType="textPersonName"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:layout_toRightOf="@+id/img_add_photo"/>
         <EditText
-            android:layout_width="170dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="210dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="8dp"
             android:id="@+id/nominal_quick"
             android:hint="Nominal Harga"
             android:paddingLeft="@dimen/editTextMoneySpacing"
@@ -53,14 +54,14 @@
             android:layout_toRightOf="@+id/img_add_photo"
             android:layout_below="@+id/nama_quick"
             android:inputType="number"
-            android:textSize="12sp"/>
+            android:textSize="14sp"/>
         <TextView
             android:layout_alignLeft="@+id/nominal_quick"
             android:layout_alignTop="@id/nominal_quick"
-            android:height="20dp"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:layout_marginTop="4dp"
+            android:height="25dp"
+            android:paddingStart="7dp"
+            android:paddingEnd="7dp"
+            android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rp"
@@ -70,17 +71,17 @@
     </RelativeLayout>
 
     <Button
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:background="@drawable/submit_button"
         android:id="@+id/btn_submit_data_quick"
         android:layout_below="@+id/relquick1"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="22dp"/>
+        android:layout_marginRight="35dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:background="#ffffff"
         android:orientation="vertical"
         android:layout_below="@id/relquick1">
@@ -93,11 +94,11 @@
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="45dp"
                 android:id="@+id/rv_data_quick"></android.support.v7.widget.RecyclerView>
             <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
                 android:src="@drawable/noitem"
                 android:layout_gravity="center"
                 android:id="@+id/no_item_quick"/>
@@ -105,7 +106,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="45dp"
             android:background="#9df6f0" />
 
     </LinearLayout>
