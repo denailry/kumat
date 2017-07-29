@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.user.kumat.Fragment.BukuHutangFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/sudah_beli">
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/radio_radio_grup_hutang"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hutang"
+                android:id="@+id/radio_hutang"
+                android:checked="true"
+                android:buttonTint="@color/kuning_hutang"
+                android:textSize="20sp"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Piutang"
+                android:id="@+id/radio_piutang"
+                android:checked="false"
+                android:buttonTint="@color/biru_hutang"
+                android:layout_marginLeft="10dp"
+                android:textSize="20sp"/>
+        </RadioGroup>
+
+        <EditText
+            android:layout_width="210dp"
+            android:layout_height="44dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/radio_radio_grup_hutang"
+            android:hint="Nama"
+            android:id="@+id/edit_nama_orang"
+            android:textColorHint="@android:color/black"
+            android:textColor="@android:color/black"
+            android:textColorLink="@android:color/black"
+            android:textColorHighlight="@android:color/black"
+            android:shadowColor="@android:color/black"
+            android:backgroundTint="@android:color/black"
+            android:textSize="14sp"
+            android:inputType="textPersonName"
+            android:text=""/>
+        <EditText
+            android:layout_width="210dp"
+            android:layout_height="44dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/edit_nama_orang"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="@dimen/editTextMoneySpacing"
+            android:hint="Nominal"
+            android:id="@+id/edit_nominal_hutang"
+            android:textColorHint="@android:color/black"
+            android:textColor="@android:color/black"
+            android:textColorLink="@android:color/black"
+            android:textColorHighlight="@android:color/black"
+            android:shadowColor="@android:color/black"
+            android:backgroundTint="@android:color/black"
+            android:textSize="14sp"
+            android:inputType="number"
+            android:text=""/>
+        <TextView
+            android:layout_alignLeft="@+id/edit_nominal_hutang"
+            android:layout_alignTop="@id/edit_nominal_hutang"
+            android:height="20dp"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:layout_marginTop="9dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp"
+            android:gravity="center"
+            android:textColor="@color/colorSecondaryBlack"
+            android:background="@color/colorBackgorundLightBrown"/>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text=""
+            android:background="@drawable/submit_button"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/edit_nominal_hutang"
+            android:layout_marginRight="35dp"
+            android:id="@+id/btn_submit_hutang" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical"
+            android:layout_below="@+id/edit_nominal_hutang"
+            android:background="@drawable/back_input">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="45dp"
+                    android:id="@+id/rv_hutang"></android.support.v7.widget.RecyclerView>
+                <ImageView
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:src="@drawable/noitem"
+                    android:layout_gravity="center"
+                    android:id="@+id/no_item_hutang"/>
+            </FrameLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="#9df6f0" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/belum_beli"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Kamu Perlu Membeli Fitur ini Di Kumat Shop!"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+    </RelativeLayout>
+
+
+</FrameLayout>

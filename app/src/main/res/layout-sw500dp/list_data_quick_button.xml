@@ -3,33 +3,33 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <Button
-        android:layout_width="7dp"
-        android:layout_height="22dp"
+        android:layout_width="13dp"
+        android:layout_height="30dp"
         android:id="@+id/btn_delete_data"
         android:layout_centerVertical="true"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="20dp"
         android:layout_alignParentRight="true"
         android:background="@drawable/edit_icon_quick"/>
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:id="@+id/icon_quick_button_data"
         android:layout_alignParentLeft="true"
         android:src="@drawable/icon_add"
         android:scaleType="fitXY"
-        android:layout_marginLeft="5dp"/>
+        android:layout_marginLeft="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/icon_quick_button_data"
         android:text="Parkiran"
-        android:textSize="19sp"
+        android:textSize="30sp"
         android:layout_centerVertical="true"
         android:textColor="@android:color/black"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="15dp"
         android:id="@+id/txtNama_data"/>
     <TextView
         android:layout_width="wrap_content"
@@ -37,9 +37,9 @@
         android:layout_toLeftOf="@+id/btn_delete_data"
         android:textColor="@android:color/black"
         android:text="2000"
-        android:textSize="17sp"
+        android:textSize="29sp"
         android:layout_centerVertical="true"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="20dp"
         android:id="@+id/txtHarga_data"/>
 
 </RelativeLayout>

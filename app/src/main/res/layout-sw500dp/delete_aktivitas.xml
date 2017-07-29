@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     android:background="#00ffffff"
     android:id="@+id/back_delete_aktivitas">
-    
+
     <RelativeLayout
-        android:layout_width="210dp"
-        android:layout_height="210dp"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
         android:background="@drawable/shape_aktivitas"
         android:layout_centerInParent="true">
 
@@ -17,12 +17,12 @@
             android:text="Uang Kiriman Bapak"
             android:textColor="@android:color/black"
             android:layout_alignLeft="@+id/view1"
-            android:layout_marginTop="18dp"
-            android:textSize="15sp"
+            android:layout_marginTop="35dp"
+            android:textSize="21sp"
             android:id="@+id/txt_detail_delete"/>
         <View
-            android:layout_width="150dp"
-            android:layout_height="4dp"
+            android:layout_width="200dp"
+            android:layout_height="7dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/txt_detail_delete"
             android:background="#b7b7b7"
@@ -33,13 +33,13 @@
             android:text="Rp 1.000.000,-"
             android:textColor="@android:color/black"
             android:layout_alignLeft="@+id/view2"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="25dp"
             android:layout_below="@id/view1"
-            android:textSize="15sp"
+            android:textSize="21sp"
             android:id="@+id/txt_harga_delete"/>
         <View
             android:layout_width="wrap_content"
-            android:layout_height="4dp"
+            android:layout_height="7dp"
             android:layout_alignLeft="@+id/view1"
             android:layout_alignRight="@+id/view1"
             android:layout_below="@+id/txt_harga_delete"
@@ -51,21 +51,21 @@
             android:text="27 Juli 2017"
             android:textColor="@android:color/black"
             android:layout_alignLeft="@+id/view2"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:layout_below="@+id/view2"
-            android:textSize="15sp"
+            android:textSize="21sp"
             android:id="@+id/tanggal_delete"/>
-        
+
         <Button
-            android:layout_width="100dp"
-            android:layout_height="30dp"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
             android:text="Delete"
             android:background="#f05d65"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="20dp"
             android:id="@+id/btn_delete_detail"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textAllCaps="false"/>
 
     </RelativeLayout>
