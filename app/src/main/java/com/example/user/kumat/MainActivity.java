@@ -3,11 +3,15 @@ package com.example.user.kumat;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import java.util.Calendar;
+
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.IdRes;
@@ -144,7 +148,6 @@ public class MainActivity extends AppCompatActivity implements IconListener {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Kumat!");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-
 
         mHandler= new Handler();
 
@@ -353,7 +356,6 @@ public class MainActivity extends AppCompatActivity implements IconListener {
             CURRENT_TAG = TAG_HOME;
             loadHomeFragment();
         }
-
     }
 
     public void setUpHeader() {
@@ -1023,12 +1025,9 @@ public class MainActivity extends AppCompatActivity implements IconListener {
                 profil.setXp(profil.getXp() + 3);
                 profil.setUpdateId(updateId);
                 profil.save();
+                showKoinDialog();
             }
         }
-        ProfilDatabase newProfil = new Select()
-                .from(ProfilDatabase.class)
-                .where(ProfilDatabase_Table.Username.eq(this.usernameAktif))
-                .querySingle();
     }
 
     public void munculAddPhotoIcon(){
@@ -1114,6 +1113,21 @@ public class MainActivity extends AppCompatActivity implements IconListener {
 
 
         txtWaktuOtomatis.setText("Tanggal "+tanggal+" Jam "+jam+":"+menit);
+    }
 
+    public void showKoinDialog() {
+        KoinGetDialog koinDialog = KoinGetDialog.newInstance(1);
+        koinDialog.setListener(new KoinGetDialog.OnButtonClick() {
+            @Override
+            public void onClick() {
+                android.app.FragmentManager fm = getFragmentManager();
+                android.app.Fragment fragment = fm.findFragmentByTag("DIALOG");
+                android.app.FragmentTransaction ft = fm.beginTransaction();
+                ft.remove(fragment);
+                ft.commit();
+            }
+        });
+        android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+        koinDialog.show(ft, "DIALOG");
     }
 }

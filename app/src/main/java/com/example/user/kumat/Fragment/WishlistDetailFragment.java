@@ -21,6 +21,7 @@ import com.example.user.kumat.Database.ProfilDatabase;
 import com.example.user.kumat.Database.ProfilDatabase_Table;
 import com.example.user.kumat.Database.WishlistDatabase;
 import com.example.user.kumat.Database.WishlistDatabase_Table;
+import com.example.user.kumat.KoinGetDialog;
 import com.example.user.kumat.Listener.OnFragmentDestroyListener;
 import com.example.user.kumat.Listener.OnItemSaveListener;
 import com.example.user.kumat.MainActivity;
@@ -229,9 +230,11 @@ public class WishlistDetailFragment extends Fragment {
                     float koinfromTarget = item.getTarget()/25000;
                     int newKoin = profile.getKoin() + (int) koinfromTarget;
                     profile.setKoin(newKoin);
+                    profile.save();
                 }
                 item.delete();
                 isDataChanged = true;
+                ((MainActivity) getActivity()).showKoinDialog();
                 getFragmentManager().popBackStack();
             } else {
                 if(dataId != DATA_NAMA || item.getId() != 1) {
