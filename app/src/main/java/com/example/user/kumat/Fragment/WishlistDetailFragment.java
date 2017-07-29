@@ -235,6 +235,7 @@ public class WishlistDetailFragment extends Fragment {
                 item.delete();
                 isDataChanged = true;
                 ((MainActivity) getActivity()).showKoinDialog();
+                ((MainActivity) getActivity()).setUpHeader();
                 getFragmentManager().popBackStack();
             } else {
                 if(dataId != DATA_NAMA || item.getId() != 1) {
