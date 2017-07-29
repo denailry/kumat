@@ -1,11 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.user.kumat.PengaturanActivity"
-    tools:showIn="@layout/activity_pengaturan">
-
-</android.support.constraint.ConstraintLayout>
+    android:orientation="vertical"
+    android:padding="20dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:id="@+id/tv_notif_home"
+                android:text="Nonaktifkan notifikasi home"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <CheckBox
+                android:id="@+id/ck_notif_home"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1.1dp"
+            android:background="@color/colorSecondaryBlack"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+            <TextView
+                android:id="@+id/tv_notif_po"
+                android:text="Nonaktifkan notifikasi pembayaran otomatis"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"/>
+            <CheckBox
+                android:id="@+id/ck_notif_po"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity=""/>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1.1dp"
+            android:background="@color/colorSecondaryBlack"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:id="@+id/tv_sync"
+                android:text="Nonaktifkan sinkronisasi data"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <CheckBox
+                android:id="@+id/ck_sync"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1.1dp"
+            android:background="@color/colorSecondaryBlack"/>
+    </LinearLayout>
+</LinearLayout>
