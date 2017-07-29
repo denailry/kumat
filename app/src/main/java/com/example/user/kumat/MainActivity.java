@@ -3,19 +3,15 @@ package com.example.user.kumat;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import java.util.Calendar;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
@@ -1000,7 +996,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
             }
         }
 
-        Intent intent = new Intent(getApplicationContext(),BubleReceiver.class);
+        Intent intent = new Intent(getApplicationContext(),BubbleReceiver.class);
         intent.putExtra("width", width);
         intent.putExtra("height", height);
         intent.putExtra("timeId", updateId);

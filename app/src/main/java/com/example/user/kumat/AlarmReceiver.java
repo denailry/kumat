@@ -10,6 +10,7 @@ import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 import com.example.user.kumat.Database.AktivitasKeuanganDatabase;
+import com.example.user.kumat.Database.PengaturanDatabase;
 import com.example.user.kumat.Database.SaldoDatabase;
 import com.example.user.kumat.Database.SaldoDatabase_Table;
 import com.raizlabs.android.dbflow.sql.language.Select;
@@ -24,8 +25,6 @@ import java.util.List;
 public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-
-        Log.d("NOTIF-WOY", "RECEIVE");
         Calendar calendar = new GregorianCalendar();
         int month = calendar.get(Calendar.MONTH);
         int year  = calendar.get(Calendar.YEAR);
@@ -35,7 +34,16 @@ public class AlarmReceiver extends BroadcastReceiver {
         String nama = intent.getStringExtra("nama");
         int harga = intent.getIntExtra("harga",0);
         int tanggal = intent.getIntExtra("tanggal",0);
+        boolean isAllowed = true;
 
+        PengaturanDatabase setting = new Select()
+                .from(PengaturanDatabase.class)
+                .querySingle();
+        if(setting != null) {
+            isAllowed = setting.isNotifPOAllowed();
+        }
+
+        Log.d("TANGGAL", String.valueOf(thisDay + " " + tanggal));
         if (thisDay==tanggal){
             List<SaldoDatabase> saldoSearch = new Select()
                     .from(SaldoDatabase.class)
@@ -48,7 +56,6 @@ public class AlarmReceiver extends BroadcastReceiver {
             int idxQuick = saldoAktiv.getIndexQuick();
 
             String title = "Pengeluaran Otomatis";
-            Log.d("NOTIF-WOY", title);
             String content = nama+" telah tercatat! jangan lupa bayar kewajiban kamu.";
 
             if (harga>saldo){
@@ -77,26 +84,25 @@ public class AlarmReceiver extends BroadcastReceiver {
 
             }
 
-            NotificationManager notificationManager = (NotificationManager) context
-                    .getSystemService(Context.NOTIFICATION_SERVICE);
+            if(isAllowed) {
+                NotificationManager notificationManager = (NotificationManager) context
+                        .getSystemService(Context.NOTIFICATION_SERVICE);
 
-            Intent resultIntent = new Intent(context, MainActivity.class);
+                Intent resultIntent = new Intent(context, MainActivity.class);
 
-            PendingIntent resultPendingIntent = PendingIntent.getActivity(context,id, resultIntent,
-                    PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent resultPendingIntent = PendingIntent.getActivity(context,id, resultIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
 
-            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context);
+                NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context);
 
-            mBuilder.setSmallIcon(R.drawable.icon_kumat_kecil);
-            mBuilder.setContentTitle(title);
-            mBuilder.setContentText(content);
-            mBuilder.setContentIntent(resultPendingIntent);
-            mBuilder.setAutoCancel(true);
+                mBuilder.setSmallIcon(R.drawable.icon_kumat_kecil);
+                mBuilder.setContentTitle(title);
+                mBuilder.setContentText(content);
+                mBuilder.setContentIntent(resultPendingIntent);
+                mBuilder.setAutoCancel(true);
 
-            notificationManager.notify(id,mBuilder.build());
-
+                notificationManager.notify(id,mBuilder.build());
+            }
         }
-
-
     }
 }
