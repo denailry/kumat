@@ -375,6 +375,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
             profil.setEmail("kumat@email.com");
             profil.setXp(0);
             profil.save();
+            showKoinDialog();
 
             setUpNama(usernameAktif);
             setUpJumlahKoin(100);
@@ -988,7 +989,9 @@ public class MainActivity extends AppCompatActivity implements IconListener {
                 .querySingle();
         int updateId = IdGen.generateTimeId();
         if(profil != null) {
-            if(profil.getUpdateId() == null || profil.getUpdateId() != updateId) {
+            if(profil.getUpdateId() == null) {
+                profil.setUpdateId(updateId);
+            } else if(profil.getUpdateId() != updateId) {
                 profil.setKoin(profil.getKoin() + 3);
                 profil.setXp(profil.getXp() + 3);
                 profil.setUpdateId(updateId);
