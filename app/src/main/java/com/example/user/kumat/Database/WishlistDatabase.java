@@ -204,6 +204,19 @@ public class WishlistDatabase extends BaseModel {
         return image;
     }
 
+    public static Bitmap fitImageSize(Bitmap image, int maxByteCount) {
+        double ratio = sqrt(image.getByteCount()/ maxByteCount);
+        if(ratio > 1) {
+            double scaledWidth = image.getWidth()/ratio;
+            double scaledHeight = image.getHeight()/ratio;
+            image = Bitmap.createScaledBitmap(image,
+                    (int) scaledWidth,
+                    (int) scaledHeight,
+                    true);
+        }
+        return image;
+    }
+
     public void commit() {
         if(amountFromSaldo != null && amountFromSaldo != 0) {
             int tipe;
