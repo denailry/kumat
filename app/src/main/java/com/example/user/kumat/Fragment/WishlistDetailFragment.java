@@ -209,13 +209,16 @@ public class WishlistDetailFragment extends Fragment {
                         .querySingle();
                 if(profile != null) {
                     float koinfromTarget = item.getTarget()/25000;
-                    int newKoin = profile.getKoin() + (int) koinfromTarget;
-                    profile.setKoin(newKoin);
-                    profile.save();
+                    int getKoin = (int) koinfromTarget;
+                    if(getKoin > 0) {
+                        int newKoin = profile.getKoin() + (int) koinfromTarget;
+                        profile.setKoin(newKoin);
+                        profile.save();
+                        ((MainActivity) getActivity()).showKoinDialog((int) koinfromTarget);
+                    }
                 }
                 item.delete();
                 isDataChanged = true;
-                ((MainActivity) getActivity()).showKoinDialog();
                 ((MainActivity) getActivity()).setUpHeader();
                 getFragmentManager().popBackStack();
             } else {

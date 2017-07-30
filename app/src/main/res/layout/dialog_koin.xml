@@ -13,4 +13,18 @@
         app:srcCompat="@drawable/koin_congratulation"
         android:layout_centerInParent="true"
         android:background="#00000000"/>
+    <TextView
+        android:id="@+id/tv_koin"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/dialog_koin"
+        android:layout_alignTop="@id/dialog_koin"
+        android:layout_alignBottom="@id/dialog_koin"
+        android:layout_alignRight="@id/dialog_koin"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="20dp"
+        android:gravity="center" />
 </RelativeLayout>
