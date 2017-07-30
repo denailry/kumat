@@ -371,7 +371,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
             profil.setEmail("kumat@email.com");
             profil.setXp(0);
             profil.save();
-            showKoinDialog();
+            showKoinDialog(100);
 
             setUpNama(usernameAktif);
             setUpJumlahKoin(100);
@@ -992,7 +992,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
                 profil.setXp(profil.getXp() + 3);
                 profil.setUpdateId(updateId);
                 profil.save();
-                showKoinDialog();
+                showKoinDialog(3);
             }
         }
 
@@ -1090,8 +1090,8 @@ public class MainActivity extends AppCompatActivity implements IconListener {
         txtWaktuOtomatis.setText("Tanggal "+tanggal+" Jam "+jam+":"+menit);
     }
 
-    public void showKoinDialog() {
-        KoinGetDialog koinDialog = KoinGetDialog.newInstance(1);
+    public void showKoinDialog(int koin) {
+        KoinGetDialog koinDialog = KoinGetDialog.newInstance(1, koin);
         koinDialog.setListener(new KoinGetDialog.OnButtonClick() {
             @Override
             public void onClick() {

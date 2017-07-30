@@ -105,10 +105,6 @@ public class WishlistDatabase extends BaseModel {
             setPersentase();
             return true;
         } else {
-            Log.d("TEST",String.valueOf(this.id));
-            Log.d("TEST",String.valueOf(this.tabungan));
-            this.tabungan = this.tabungan + amount;
-            Log.d("TEST",String.valueOf(this.tabungan));
             if(this.id != 1L) { //Bukan "Tabunganku"
                 WishlistDatabase tabunganku = new Select()
                         .from(WishlistDatabase.class)
@@ -120,7 +116,10 @@ public class WishlistDatabase extends BaseModel {
                 this.tabungan = this.tabungan + amount;
                 this.amountFromTabunganku = this.amountFromTabunganku + amount;
                 setPersentase();
+
+                return true;
             }
+            this.tabungan = this.tabungan + amount;
             return true;
         }
     }
@@ -193,6 +192,19 @@ public class WishlistDatabase extends BaseModel {
 
     public static Bitmap fitImageSize(Bitmap image) {
         double ratio = sqrt(image.getByteCount()/500000);
+        if(ratio > 1) {
+            double scaledWidth = image.getWidth()/ratio;
+            double scaledHeight = image.getHeight()/ratio;
+            image = Bitmap.createScaledBitmap(image,
+                    (int) scaledWidth,
+                    (int) scaledHeight,
+                    true);
+        }
+        return image;
+    }
+
+    public static Bitmap fitImageSize(Bitmap image, int maxByteCount) {
+        double ratio = sqrt(image.getByteCount()/ maxByteCount);
         if(ratio > 1) {
             double scaledWidth = image.getWidth()/ratio;
             double scaledHeight = image.getHeight()/ratio;

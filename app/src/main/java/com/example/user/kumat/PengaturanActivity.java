@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 
 import com.example.user.kumat.Database.PengaturanDatabase;
 import com.raizlabs.android.dbflow.sql.language.Select;
@@ -39,6 +40,7 @@ public class PengaturanActivity extends AppCompatActivity {
         ((CheckBox) findViewById(R.id.ck_notif_home)).setChecked(!setting.isNotifHomeAllowed());
         ((CheckBox) findViewById(R.id.ck_notif_po)).setChecked(!setting.isNotifPOAllowed());
         ((CheckBox) findViewById(R.id.ck_sync)).setChecked(!setting.isSyncAllowed());
+        ((LinearLayout) findViewById(R.id.cnt_sync)).setVisibility(View.GONE);
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {

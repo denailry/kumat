@@ -10,26 +10,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * Created by denail on 17/07/29.
  */
 
 public class KoinGetDialog extends DialogFragment {
-    int mNum;
-
-    OnButtonClick listener;
+    private int mNum;
+    private int koin;
+    private OnButtonClick listener;
 
     /**
      * Create a new instance of MyDialogFragment, providing "num"
      * as an argument.
      */
-    public static KoinGetDialog newInstance(int num) {
+    public static KoinGetDialog newInstance(int num, int koin) {
         KoinGetDialog f = new KoinGetDialog();
 
         // Supply num input as an argument.
         Bundle args = new Bundle();
         args.putInt("num", num);
+        args.putInt("koin", koin);
         f.setArguments(args);
 
         return f;
@@ -39,6 +41,7 @@ public class KoinGetDialog extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mNum = getArguments().getInt("num");
+        koin = getArguments().getInt("koin");
 
         // Pick a style based on the num.
         int style = DialogFragment.STYLE_NORMAL, theme = 0;
@@ -76,6 +79,7 @@ public class KoinGetDialog extends DialogFragment {
                 listener.onClick();
             }
         });
+        ((TextView) v.findViewById(R.id.tv_koin)).setText(String.valueOf(this.koin));
 
         return v;
     }

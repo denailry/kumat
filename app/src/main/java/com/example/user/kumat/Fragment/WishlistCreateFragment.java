@@ -129,29 +129,19 @@ public class WishlistCreateFragment extends Fragment {
         ivIkon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/*");
-                if(intent.resolveActivity(getActivity().getPackageManager()) != null) {
-                    startActivityForResult(intent, REQUEST_IMAGE_GET);
-                }
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                WishlistChangeImageFragment fragment = new WishlistChangeImageFragment(new WishlistChangeImageFragment.ImageGetListener() {
+                    @Override
+                    public void onGet(Bitmap image) {
+                        ivIkon.setImageBitmap(image);
+                        newImage = image;
+                    }
+                });
+                ft.add(R.id.rl_fragment_wishlist_create, fragment);
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_GET && resultCode == RESULT_OK)  {
-            Uri fullPhotoUri = data.getData();
-
-            try {
-                newImage = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), fullPhotoUri);
-                newImage = WishlistDatabase.fitImageSize(newImage);
-            } catch (IOException e) {
-                Log.d(getClass().getSimpleName(), "Failed to get image.");
-            }
-
-            ivIkon.setImageBitmap(newImage);
-        }
     }
 
     @Override

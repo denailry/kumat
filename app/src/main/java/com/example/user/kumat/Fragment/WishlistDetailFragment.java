@@ -1,10 +1,7 @@
 package com.example.user.kumat.Fragment;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -13,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,16 +17,11 @@ import com.example.user.kumat.Database.ProfilDatabase;
 import com.example.user.kumat.Database.ProfilDatabase_Table;
 import com.example.user.kumat.Database.WishlistDatabase;
 import com.example.user.kumat.Database.WishlistDatabase_Table;
-import com.example.user.kumat.KoinGetDialog;
 import com.example.user.kumat.Listener.OnFragmentDestroyListener;
 import com.example.user.kumat.Listener.OnItemSaveListener;
 import com.example.user.kumat.MainActivity;
 import com.example.user.kumat.R;
 import com.raizlabs.android.dbflow.sql.language.Select;
-
-import java.io.IOException;
-
-import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by denail on 17/07/13.
@@ -58,7 +49,7 @@ public class WishlistDetailFragment extends Fragment {
     private OnItemSaveListener onItemSaveListener;
     private OnFragmentDestroyListener onFragmentDestroyListener;
     private Boolean isDataChanged;
-    private Bitmap image;
+    private Bitmap img;
 
     public WishlistDetailFragment(WishlistDatabase item) {
         this.item = item;
@@ -105,22 +96,6 @@ public class WishlistDetailFragment extends Fragment {
         btnSave.setOnClickListener(new ClickListener(DATA_SAVE));
         ivIkon.setOnClickListener(new ClickListener(DATA_IMAGE));
         btnFinish.setOnClickListener(new ClickListener(DATA_FINISH));
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_GET && resultCode == RESULT_OK)  {
-            Uri fullPhotoUri = data.getData();
-
-            try {
-                image = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),
-                        fullPhotoUri);
-            } catch (IOException e) {
-                Log.d(getClass().getSimpleName(), "Failed to get image.");
-            }
-
-            ivIkon.setImageBitmap(image);
-        }
     }
 
     @Override
@@ -198,16 +173,22 @@ public class WishlistDetailFragment extends Fragment {
                 ft.commit();
             } else if (dataId == DATA_IMAGE) {
                 if(item.getId() != 1) {
-                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                    intent.setType("image/*");
-                    if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
-                        startActivityForResult(intent, REQUEST_IMAGE_GET);
-                    }
-                    isDataChanged = true;
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    WishlistChangeImageFragment fragment = new WishlistChangeImageFragment(new WishlistChangeImageFragment.ImageGetListener() {
+                        @Override
+                        public void onGet(Bitmap image) {
+                            ivIkon.setImageBitmap(image);
+                            img = image;
+                            isDataChanged = true;
+                        }
+                    });
+                    ft.add(R.id.rl_fragment_wishlist_detail, fragment);
+                    ft.addToBackStack(null);
+                    ft.commit();
                 }
             } else if (dataId == DATA_SAVE) {
-                if (image != null) {
-                    item.setImage(image);
+                if (img != null) {
+                    item.setImage(img);
                 }
                 item.commit();
                 isDataChanged = true;
@@ -228,13 +209,16 @@ public class WishlistDetailFragment extends Fragment {
                         .querySingle();
                 if(profile != null) {
                     float koinfromTarget = item.getTarget()/25000;
-                    int newKoin = profile.getKoin() + (int) koinfromTarget;
-                    profile.setKoin(newKoin);
-                    profile.save();
+                    int getKoin = (int) koinfromTarget;
+                    if(getKoin > 0) {
+                        int newKoin = profile.getKoin() + (int) koinfromTarget;
+                        profile.setKoin(newKoin);
+                        profile.save();
+                        ((MainActivity) getActivity()).showKoinDialog((int) koinfromTarget);
+                    }
                 }
                 item.delete();
                 isDataChanged = true;
-                ((MainActivity) getActivity()).showKoinDialog();
                 ((MainActivity) getActivity()).setUpHeader();
                 getFragmentManager().popBackStack();
             } else {
