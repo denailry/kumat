@@ -19,7 +19,7 @@ public class BukuHutangDatabase extends BaseModel {
     @Column
     String nama;
     @Column
-    int nominal;
+    long nominal;
     @Column
     int tipe; // tipe 0=hutang, 1=piutang
     @Column
@@ -52,7 +52,7 @@ public class BukuHutangDatabase extends BaseModel {
         this.nama = nama;
     }
 
-    public void setNominal(int nominal) {
+    public void setNominal(long nominal) {
         this.nominal = nominal;
     }
 
@@ -64,7 +64,7 @@ public class BukuHutangDatabase extends BaseModel {
         return id;
     }
 
-    public int getNominal() {
+    public long getNominal() {
         return nominal;
     }
 

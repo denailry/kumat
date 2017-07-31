@@ -18,7 +18,7 @@ public class AktivitasKeuanganDatabase extends BaseModel {
     @Column
     int tipe; //tipe 0=pengeluaran, tipe 1 = pemasukan ,2 = pengeluaran(piutang), 3 = pemasukan(ngutang) , 4 =pengeluaran(bayar utang), 5 = pemasukan(piutang dibayar)
     @Column
-    int hargaBarang;
+    long hargaBarang;
     @Column
     int tanggal;
     @Column
@@ -38,7 +38,7 @@ public class AktivitasKeuanganDatabase extends BaseModel {
         return bulan;
     }
 
-    public int getHargaBarang() {
+    public long getHargaBarang() {
         return hargaBarang;
     }
 
@@ -62,7 +62,7 @@ public class AktivitasKeuanganDatabase extends BaseModel {
         this.bulan = bulan;
     }
 
-    public void setHargaBarang(int hargaBarang) {
+    public void setHargaBarang(long hargaBarang) {
         this.hargaBarang = hargaBarang;
     }
 

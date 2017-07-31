@@ -48,7 +48,7 @@ public class WishlistDatabase extends BaseModel {
     Blob image;
 
     private Integer amountFromSaldo;
-    private Integer amountFromTabunganku;
+    private Integer amountFromTabunganku ;
 
     public WishlistDatabase() {
         this(0L, "Create New", 0, 0, null);

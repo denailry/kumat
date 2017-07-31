@@ -57,7 +57,7 @@ public class QuickButtonFragment extends Fragment implements DataQuickButtonList
     Button btnSubmiDataQuick;
 
     String namaBarang;
-    int hargaBarang;
+    long hargaBarang;
 
     ImageView imgNoItem;
 

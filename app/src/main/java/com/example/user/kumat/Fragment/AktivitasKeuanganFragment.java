@@ -53,12 +53,12 @@ public class AktivitasKeuanganFragment extends Fragment implements AktivitasKeua
     int pilihanPeriode;
 
     //variabel saldo
-    int saldo;
+    long saldo;
     int idxQuick;
     int idxAktivitas;
 
-    int totalPemasukan ;
-    int totalPengeluaran;
+    long totalPemasukan ;
+    long totalPengeluaran;
 
     int day1,mont1,year1,day2,mont2,year2;
 

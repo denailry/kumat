@@ -32,7 +32,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         int id = intent.getIntExtra("id",0);
         String nama = intent.getStringExtra("nama");
-        int harga = intent.getIntExtra("harga",0);
+        long harga = intent.getLongExtra("harga",0);
         int tanggal = intent.getIntExtra("tanggal",0);
         boolean isAllowed = true;
 
@@ -51,7 +51,7 @@ public class AlarmReceiver extends BroadcastReceiver {
                     .queryList();
             SaldoDatabase saldoAktiv = saldoSearch.get(0);
 
-            int saldo = saldoAktiv.getSaldo();
+            long saldo = saldoAktiv.getSaldo();
             int idxAktiv = saldoAktiv.getIndex();
             int idxQuick = saldoAktiv.getIndexQuick();
 
