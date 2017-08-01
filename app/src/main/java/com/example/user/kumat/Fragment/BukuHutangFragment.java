@@ -198,7 +198,7 @@ public class BukuHutangFragment extends Fragment implements BukuHutangListener{
     private void cekSudahBeli() {
         ProfilDatabase profil = new Select()
                 .from(ProfilDatabase.class)
-                .where(ProfilDatabase_Table.Username.is(((MainActivity)getActivity()).usernameAktif))
+                .where(ProfilDatabase_Table.username.is(((MainActivity)getActivity()).usernameAktif))
                 .querySingle();
         if (profil.isBukuHutang()){
             belumBeli.setVisibility(View.GONE);

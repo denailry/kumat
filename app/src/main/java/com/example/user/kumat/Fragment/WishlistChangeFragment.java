@@ -182,10 +182,10 @@ public class WishlistChangeFragment extends Fragment {
         public void onClick(View view) {
             if(dataId != DATA_DELETE) {
                 String strInput = etNama.getText().toString();
-                Integer intInput = 0;
+                long longInput = 0;
                 try {
                     if(strInput.trim().length() > 0) {
-                        intInput = Integer.parseInt(strInput);
+                        longInput = Long.parseLong(strInput);
                     }
                 } catch (NumberFormatException e) {
                     Log.e(getClass().getSimpleName(), "Trying to convert non-numeric string to integer.");
@@ -196,27 +196,27 @@ public class WishlistChangeFragment extends Fragment {
                     String strTarget = etTarget.getText().toString();
                     try {
                         if(strTarget.trim().length() > 0) {
-                            intInput = Integer.parseInt(strTarget);
+                            longInput = Integer.parseInt(strTarget);
                         }
                     } catch (NumberFormatException e) {
                         Log.e(getClass().getSimpleName(), "Trying to convert non-numeric string to integer.");
                     }
-                    item.setTarget(intInput);
+                    item.setTarget(longInput);
                     listener.onSave(item);
                 } else if(dataId == DATA_TABUNGAN_PLUS) {
                     if(choice == FROM_SALDO) {
-                        if(!item.addTabungan(intInput, true)) {
+                        if(!item.addTabungan(longInput, true)) {
                             Toast.makeText(getContext(), "Invalid Action", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        if(!item.addTabungan(intInput, false)) {
+                        if(!item.addTabungan(longInput, false)) {
                             Toast.makeText(getContext(), "Invalid Action", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                 } else if(dataId == DATA_TABUNGAN_MINUS) {
                     boolean isRequireSaldo = (choice == FROM_SALDO);
-                    if(!item.decTabungan(intInput, isRequireSaldo)) {
+                    if(!item.decTabungan(longInput, isRequireSaldo)) {
                         Toast.makeText(getContext(), "Invalid Action", Toast.LENGTH_SHORT).show();
                     }
                 }

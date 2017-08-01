@@ -10,16 +10,10 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
  */
 @Table( database = MyDatabase.class)
 public class QuickButtonDatabase extends BaseModel {
-    @Column
-    @PrimaryKey
-    int id;
-    @Column
-    int icon;
-    @Column
-    String nama;
-    @Column
-    long harga;
-
+    @Column @PrimaryKey private int id;
+    @Column private int icon;
+    @Column private String nama;
+    @Column private long harga;
 
     public void setId(int id) {
         this.id = id;

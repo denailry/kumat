@@ -124,7 +124,7 @@ public class WishlistDetailFragment extends Fragment {
             tvPersentase.setText(item.getPersentase());
         }
 
-        tvTabungan.setText(item.getTabungan().toString());
+        tvTabungan.setText(String.valueOf(item.getTabungan()));
         if(item.getId() == 1) {
             btnDelete.setVisibility(View.GONE);
             cntTarget.setVisibility(View.GONE);
@@ -195,7 +195,7 @@ public class WishlistDetailFragment extends Fragment {
                 getFragmentManager().popBackStack();
             } else if (dataId == DATA_FINISH){
                 if(item.getTabungan() != item.getTarget()) {
-                    int difference = item.getTabungan() - item.getTarget();
+                    long difference = item.getTabungan() - item.getTarget();
                     WishlistDatabase tabunganku = new Select()
                             .from(WishlistDatabase.class)
                             .where(WishlistDatabase_Table.id.eq(1L))
@@ -205,16 +205,16 @@ public class WishlistDetailFragment extends Fragment {
                 }
                 ProfilDatabase profile = new Select()
                         .from(ProfilDatabase.class)
-                        .where(ProfilDatabase_Table.Username.eq(((MainActivity) getActivity()).usernameAktif))
+                        .where(ProfilDatabase_Table.username.eq(((MainActivity) getActivity()).usernameAktif))
                         .querySingle();
                 if(profile != null) {
-                    float koinfromTarget = item.getTarget()/25000;
-                    int getKoin = (int) koinfromTarget;
+                    double koinfromTarget = item.getTarget()/25000;
+                    long getKoin = (long) koinfromTarget;
                     if(getKoin > 0) {
-                        int newKoin = profile.getKoin() + (int) koinfromTarget;
+                        long newKoin = profile.getKoin() + (long) koinfromTarget;
                         profile.setKoin(newKoin);
                         profile.save();
-                        ((MainActivity) getActivity()).showKoinDialog((int) koinfromTarget);
+                        ((MainActivity) getActivity()).showKoinDialog((long) koinfromTarget);
                     }
                 }
                 item.delete();

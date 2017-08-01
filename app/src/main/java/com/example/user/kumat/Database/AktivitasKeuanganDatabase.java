@@ -10,21 +10,36 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
  */
 @Table( database = MyDatabase.class)
 public class AktivitasKeuanganDatabase extends BaseModel {
-    @Column
-    @PrimaryKey
-    int id;
-    @Column
-    String NamaBarang;
-    @Column
-    int tipe; //tipe 0=pengeluaran, tipe 1 = pemasukan ,2 = pengeluaran(piutang), 3 = pemasukan(ngutang) , 4 =pengeluaran(bayar utang), 5 = pemasukan(piutang dibayar)
-    @Column
-    long hargaBarang;
-    @Column
-    int tanggal;
-    @Column
-    int bulan;
-    @Column
-    int tahun;
+    /**
+     * TIPE:
+     * 0 = pengeluaran
+     * 1 = pemasukan
+     * 2 = pengeluaran(piutang)
+     * 3 = pemasukan(ngutang)
+     * 4 = pengeluaran(bayar utang)
+     * 5 = pemasukan(piutang dibayar)
+     */
+
+    @Column @PrimaryKey private int id;
+    @Column private String namaBarang;
+    @Column private int tipe;
+    @Column private long hargaBarang;
+    @Column private int tanggal;
+    @Column private int bulan;
+    @Column private int tahun;
+
+    public AktivitasKeuanganDatabase() {
+    }
+
+    public AktivitasKeuanganDatabase(int id, String namaBarang, int tipe, long hargaBarang, int tanggal, int bulan, int tahun) {
+        this.id = id;
+        this.namaBarang = namaBarang;
+        this.tipe = tipe;
+        this.hargaBarang = hargaBarang;
+        this.tanggal = tanggal;
+        this.bulan = bulan;
+        this.tahun = tahun;
+    }
 
     public int getTipe() {
         return tipe;
@@ -55,7 +70,7 @@ public class AktivitasKeuanganDatabase extends BaseModel {
     }
 
     public String getNamaBarang() {
-        return NamaBarang;
+        return namaBarang;
     }
 
     public void setBulan(int bulan) {
@@ -71,7 +86,7 @@ public class AktivitasKeuanganDatabase extends BaseModel {
     }
 
     public void setNamaBarang(String namaBarang) {
-        NamaBarang = namaBarang;
+        this.namaBarang = namaBarang;
     }
 
     public void setTahun(int tahun) {

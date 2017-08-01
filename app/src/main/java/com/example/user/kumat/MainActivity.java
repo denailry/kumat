@@ -399,7 +399,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
     private void setUpEmail(String email){
         emailProfil.setText(email);
     }
-    private void setUpJumlahKoin(int koin){
+    private void setUpJumlahKoin(long koin){
         koinProfil.setText(String.valueOf(koin));
     }
 
@@ -981,7 +981,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
 
         ProfilDatabase profil = new Select()
                 .from(ProfilDatabase.class)
-                .where(ProfilDatabase_Table.Username.eq(this.usernameAktif))
+                .where(ProfilDatabase_Table.username.eq(this.usernameAktif))
                 .querySingle();
         int updateId = IdGen.generateTimeId();
         if(profil != null) {
@@ -1090,7 +1090,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
         txtWaktuOtomatis.setText("Tanggal "+tanggal+" Jam "+jam+":"+menit);
     }
 
-    public void showKoinDialog(int koin) {
+    public void showKoinDialog(long koin) {
         KoinGetDialog koinDialog = KoinGetDialog.newInstance(1, koin);
         koinDialog.setListener(new KoinGetDialog.OnButtonClick() {
             @Override

@@ -87,7 +87,7 @@ public class WishlistCreateFragment extends Fragment {
                 fragment.setOnItemSave(new WishlistChangeFragment.OnItemSave() {
                     @Override
                     public void onSave(WishlistDatabase item) {
-                        tvTabungan.setText(item.getTabungan().toString());
+                        tvTabungan.setText(String.valueOf(item.getTabungan()));
                     }
                 });
                 ft.add(R.id.rl_fragment_wishlist_create, fragment);

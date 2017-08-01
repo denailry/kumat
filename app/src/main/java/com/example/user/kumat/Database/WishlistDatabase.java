@@ -21,34 +21,18 @@ import static java.lang.Math.sqrt;
  * Created by denail on 17/07/10.
  */
 
-/**
- * TODO 1   : IMAGE ORIENTATION
- * TODO 2   : addTabungan -- isRequireSaldo == false
- *          : problem   : Connect to AktivitasKeuanganDatabase
- *                        Cannot give AktivitasKeuangan new id
- * TODO 3   : decTabungan -- isRequireSaldo == false
- *          : problem   : uangnya mau ke mana? Tabunganku atau ke pengeluaran?
- */
-
 @Table(database = MyDatabase.class)
 public class WishlistDatabase extends BaseModel {
 
-    @Column
-    @PrimaryKey
-    Long id;
-    @Column
-    String nama;
-    @Column
-    Integer target;
-    @Column
-    Integer tabungan;
-    @Column
-    String persentase;
-    @Column
-    Blob image;
+    @Column @PrimaryKey Long id;
+    @Column String nama;
+    @Column long target;
+    @Column long tabungan;
+    @Column String persentase;
+    @Column Blob image;
 
-    private Integer amountFromSaldo;
-    private Integer amountFromTabunganku ;
+    private long amountFromSaldo;
+    private long amountFromTabunganku ;
 
     public WishlistDatabase() {
         this(0L, "Create New", 0, 0, null);
@@ -58,7 +42,7 @@ public class WishlistDatabase extends BaseModel {
         this(id, "", 0, 0, null);
     }
 
-    public WishlistDatabase(Long id, String nama, Integer target, Integer tabungan, Bitmap image) {
+    public WishlistDatabase(Long id, String nama, long target, long tabungan, Bitmap image) {
         this.id = id;
         this.nama = nama;
         this.target = target;
@@ -81,20 +65,20 @@ public class WishlistDatabase extends BaseModel {
         this.nama = nama;
     }
 
-    public Integer getTarget() {
+    public long getTarget() {
         return target;
     }
 
-    public void setTarget(Integer target) {
+    public void setTarget(long target) {
         this.target = target;
         setPersentase();
     }
 
-    public Integer getTabungan() {
+    public long getTabungan() {
         return tabungan;
     }
 
-    public Boolean addTabungan(int amount, boolean isRequireSaldo) {
+    public Boolean addTabungan(long amount, boolean isRequireSaldo) {
         if(isRequireSaldo) {
             SaldoDatabase saldo = new Select().from(SaldoDatabase.class).querySingle();
             if(saldo.getSaldo() < amount + this.amountFromSaldo) {
@@ -124,7 +108,7 @@ public class WishlistDatabase extends BaseModel {
         }
     }
 
-    public Boolean decTabungan(int amount, boolean isRequireSaldo) {
+    public Boolean decTabungan(long amount, boolean isRequireSaldo) {
         if(this.tabungan < amount) {
             return false;
         }
@@ -153,10 +137,10 @@ public class WishlistDatabase extends BaseModel {
 
     private void setPersentase() {
         if(target == 0) {
-            this.persentase = tabungan.toString();
+            this.persentase = String.valueOf(tabungan);
         } else {
-            Integer persentase = (this.tabungan*100)/this.target;
-            this.persentase = persentase.toString();
+            long persentase = (this.tabungan*100)/this.target;
+            this.persentase = String.valueOf(persentase);
         }
     }
 
@@ -217,7 +201,7 @@ public class WishlistDatabase extends BaseModel {
     }
 
     public void commit() {
-        if(amountFromSaldo != null && amountFromSaldo != 0) {
+        if(amountFromSaldo != 0) {
             int tipe;
             if(amountFromSaldo > 0) {
                 tipe = 0;

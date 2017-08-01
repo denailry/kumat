@@ -12,15 +12,10 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
 @Table( database = MyDatabase.class)
 public class ShopDatabase extends BaseModel {
 
-    @Column
-    @PrimaryKey
-    int id;
-    @Column
-    String judul;
-    @Column
-    int foto;
-    @Column
-    int koin;
+    @Column @PrimaryKey private int id;
+    @Column private String judul;
+    @Column private int foto;
+    @Column private int koin;
 
     public int getKoin() {
         return koin;

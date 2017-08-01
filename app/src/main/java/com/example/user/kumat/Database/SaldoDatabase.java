@@ -11,15 +11,10 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
 
 @Table( database = MyDatabase.class)
 public class SaldoDatabase extends BaseModel{
-    @Column
-    @PrimaryKey
-    int id;
-    @Column
-    long saldo;
-    @Column
-    int index;
-    @Column
-    int indexQuick;
+    @Column @PrimaryKey int id;
+    @Column private long saldo;
+    @Column private int index;
+    @Column private int indexQuick;
 
     public int getIndexQuick() {
         return indexQuick;

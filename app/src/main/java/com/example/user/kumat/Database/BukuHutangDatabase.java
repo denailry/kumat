@@ -12,21 +12,24 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
 @Table( database = MyDatabase.class)
 public class BukuHutangDatabase extends BaseModel {
 
-    @Column
-    @PrimaryKey
-    int id;
+    @Column @PrimaryKey private int id;
+    @Column private String nama;
+    @Column private long nominal;
+    @Column private int tipe; // tipe 0 = hutang, 1 = piutang
+    @Column private boolean muncul;
+    @Column private int idAktivitas;
 
-    @Column
-    String nama;
-    @Column
-    long nominal;
-    @Column
-    int tipe; // tipe 0=hutang, 1=piutang
-    @Column
-    boolean muncul;
-    @Column
-    int idAktivitas;
+    public BukuHutangDatabase() {
+    }
 
+    public BukuHutangDatabase(int id, String nama, long nominal, int tipe, boolean muncul, int idAktivitas) {
+        this.id = id;
+        this.nama = nama;
+        this.nominal = nominal;
+        this.tipe = tipe;
+        this.muncul = muncul;
+        this.idAktivitas = idAktivitas;
+    }
 
     public void setIdAktivitas(int idAktivitas) {
         this.idAktivitas = idAktivitas;
@@ -75,5 +78,4 @@ public class BukuHutangDatabase extends BaseModel {
     public String getNama() {
         return nama;
     }
-
 }

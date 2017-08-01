@@ -12,16 +12,10 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
 @Table( database = MyDatabase.class)
 public class PengaturanDatabase extends BaseModel {
 
-    @PrimaryKey
-    @Column
-    private int id;
-
-    @Column
-    private boolean isNotifHomeAllowed;
-    @Column
-    private boolean isNotifPOAllowed;
-    @Column
-    private boolean isSyncAllowed;
+    @PrimaryKey @Column private int id;
+    @Column private boolean isNotifHomeAllowed;
+    @Column private boolean isNotifPOAllowed;
+    @Column private boolean isSyncAllowed;
 
     public PengaturanDatabase() {
         this.id = 1;

@@ -12,11 +12,8 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
 
 @Table(database = MyDatabase.class)
 public class WishlistTransactionDatabase extends BaseModel {
-    @Column
-    @PrimaryKey
-    int id;
-    @Column
-    Long wishlistId;
+    @Column @PrimaryKey int id;
+    @Column Long wishlistId;
 
     public WishlistTransactionDatabase() {}
 

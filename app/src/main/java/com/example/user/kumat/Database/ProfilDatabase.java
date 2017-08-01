@@ -18,23 +18,27 @@ import java.io.ByteArrayOutputStream;
 @Table( database = MyDatabase.class)
 public class ProfilDatabase extends BaseModel {
 
-    @Column
-    @PrimaryKey
-    int id;
-    @Column
-    String Username;
-    @Column
-    String email;
-    @Column
-    double xp;
-    @Column
-    int koin;
-    @Column
-    Blob fotoProfil;
-    @Column
-    boolean bukuHutang;
-    @Column
-    private Integer updateId;
+    @Column @PrimaryKey private int id;
+    @Column private String username;
+    @Column private String email;
+    @Column private double xp;
+    @Column private long koin;
+    @Column private Blob fotoProfil;
+    @Column private boolean bukuHutang;
+    @Column private Integer updateId;
+
+    public ProfilDatabase() {}
+
+    public ProfilDatabase(int id, String username, String email, double xp, long koin, Blob fotoProfil, boolean bukuHutang, Integer updateId) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.xp = xp;
+        this.koin = koin;
+        this.fotoProfil = fotoProfil;
+        this.bukuHutang = bukuHutang;
+        this.updateId = updateId;
+    }
 
     public Integer getUpdateId() {
         return updateId;
@@ -68,12 +72,12 @@ public class ProfilDatabase extends BaseModel {
         this.fotoProfil = fotoProfil;
     }
 
-    public void setKoin(int koin) {
+    public void setKoin(long koin) {
         this.koin = koin;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
 
     public void setXp(double xp) {
@@ -88,7 +92,7 @@ public class ProfilDatabase extends BaseModel {
         return xp;
     }
 
-    public int getKoin() {
+    public long getKoin() {
         return koin;
     }
 
@@ -97,7 +101,7 @@ public class ProfilDatabase extends BaseModel {
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
     public void setImage(Bitmap image) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

@@ -12,20 +12,23 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
 @Table( database = MyDatabase.class)
 public class PengeluaranOtomatisDatabase extends BaseModel {
 
-    @Column
-    @PrimaryKey
-    int id;
+    @Column @PrimaryKey private int id;
+    @Column private String namaBarang;
+    @Column private long hargaBarang;
+    @Column private int tanggal;
+    @Column private int jam;
+    @Column private int menit;
 
-    @Column
-    String namaBarang;
-    @Column
-    long hargaBarang;
-    @Column
-    int tanggal;
-    @Column
-    int jam;
-    @Column
-    int menit;
+    public PengeluaranOtomatisDatabase() {}
+
+    public PengeluaranOtomatisDatabase(int id, String namaBarang, long hargaBarang, int tanggal, int jam, int menit) {
+        this.id = id;
+        this.namaBarang = namaBarang;
+        this.hargaBarang = hargaBarang;
+        this.tanggal = tanggal;
+        this.jam = jam;
+        this.menit = menit;
+    }
 
     public void setId(int id) {
         this.id = id;

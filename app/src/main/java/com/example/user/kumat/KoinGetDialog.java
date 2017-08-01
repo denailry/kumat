@@ -18,20 +18,20 @@ import android.widget.TextView;
 
 public class KoinGetDialog extends DialogFragment {
     private int mNum;
-    private int koin;
+    private long koin;
     private OnButtonClick listener;
 
     /**
      * Create a new instance of MyDialogFragment, providing "num"
      * as an argument.
      */
-    public static KoinGetDialog newInstance(int num, int koin) {
+    public static KoinGetDialog newInstance(int num, long koin) {
         KoinGetDialog f = new KoinGetDialog();
 
         // Supply num input as an argument.
         Bundle args = new Bundle();
         args.putInt("num", num);
-        args.putInt("koin", koin);
+        args.putLong("koin", koin);
         f.setArguments(args);
 
         return f;
@@ -41,7 +41,7 @@ public class KoinGetDialog extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mNum = getArguments().getInt("num");
-        koin = getArguments().getInt("koin");
+        koin = getArguments().getLong("koin");
 
         // Pick a style based on the num.
         int style = DialogFragment.STYLE_NORMAL, theme = 0;
