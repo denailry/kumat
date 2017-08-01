@@ -15,11 +15,34 @@ public class CreditActivity extends AppCompatActivity {
     CreditAdapter adapter;
 
     String[] listJudul = {
-            "google"
+            "Trash Bin Icon made by Egor Rumnyantsev",
+            "Notebook icon by Madebyoliver",
+            "Car icon by Creaticca Creative Agency",
+            "Plate fork and knife, Bike icon, Paintbrush and palette, Air Transport, Computer (Modified), Food, Calendar.by Freepik",
+            "Star Icon, Gasoline, Bag Briefcase Folder Office Pencil Stationary Carry, Bus (Modified), Book, Motorcycle (Modified), Heart, Telephone, Noodle by anonymous",
+            "Clock icon shared by Ocal",
+            "Book icon by Charles Riccardi, US",
+            " Food Icon by Sebastioan Langer, DE",
+            "Photo (modified) icon by DesignBolts",
+            "Debt icon by Iconfinder ApS",
+            "Flash icon by Iconnice",
+            "Gears by anonymous"
     };
 
     String[] listUrl = {
-            "http://www.google.com"
+            "https://www.flaticon.com",
+            "https://www.flaticon.com",
+            "https://www.flaticon.com",
+            "https://www.flaticon.com",
+            "https://www.onlinewebfonts.com",
+            "https://http://www.clker.com",
+            "https://thenounproject.com",
+            "https://thenounproject.com",
+            "http://m.veryicon.com/",
+            "https://www.iconfinder.com",
+            "https://www.flaticon.com",
+            "http://simpleicon.com"
+
     };
 
     @Override

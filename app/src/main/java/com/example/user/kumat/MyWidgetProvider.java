@@ -76,8 +76,8 @@ public class MyWidgetProvider extends AppWidgetProvider {
                 .where(SaldoDatabase_Table.id.is(1))
                 .querySingle();
 
-        int saldo = dataSaldo.getSaldo();
-        int hargaBarang = quick.getHarga();
+        long saldo = dataSaldo.getSaldo();
+        long hargaBarang = quick.getHarga();
 
         if (hargaBarang>saldo){
             Toast.makeText(context, "Nominal melebihi jumlah saldo", Toast.LENGTH_SHORT).show();

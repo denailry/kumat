@@ -57,7 +57,7 @@ public class BukuHutangFragment extends Fragment implements BukuHutangListener{
     int pilihan=0;
     int idHutang;
 
-    int saldo;
+    long saldo;
     int idAktivitas;
     int idQuick;
 
@@ -138,7 +138,7 @@ public class BukuHutangFragment extends Fragment implements BukuHutangListener{
                     try {
 
                         String namaOrang = edtNama.getText().toString();
-                        int nominalHarga = Integer.parseInt(edtNominal.getText().toString());
+                        long nominalHarga = Integer.parseInt(edtNominal.getText().toString());
 
                         if (pilihan==0){
                             BukuHutangDatabase bukuHutang = new BukuHutangDatabase();
@@ -348,7 +348,7 @@ public class BukuHutangFragment extends Fragment implements BukuHutangListener{
 
     }
 
-    public void pengeluaran(int tipe,String namaBarang, int hargaBarang,int day, int month, int year){
+    public void pengeluaran(int tipe,String namaBarang, long hargaBarang,int day, int month, int year){
         AktivitasKeuanganDatabase aktivitasKeuangan = new AktivitasKeuanganDatabase();
         aktivitasKeuangan.setId(idAktivitas);
         aktivitasKeuangan.setNamaBarang(namaBarang);
@@ -373,7 +373,7 @@ public class BukuHutangFragment extends Fragment implements BukuHutangListener{
 
     }
 
-    public void pemasukan(int tipe,String namaBarang, int hargaBarang,int day, int month, int year){
+    public void pemasukan(int tipe,String namaBarang, long hargaBarang,int day, int month, int year){
         AktivitasKeuanganDatabase aktivitasKeuangan = new AktivitasKeuanganDatabase();
         aktivitasKeuangan.setId(idAktivitas);
         aktivitasKeuangan.setNamaBarang(namaBarang);

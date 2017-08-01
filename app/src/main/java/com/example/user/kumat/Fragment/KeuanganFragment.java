@@ -57,7 +57,7 @@ public class KeuanganFragment extends Fragment implements QuickButtonListener{
     ImageView imgNoItem;
 
     int pilihan=0;
-    int saldo;
+    long saldo;
     int id=1;
     int idx;
     int idxQuick;
@@ -67,7 +67,7 @@ public class KeuanganFragment extends Fragment implements QuickButtonListener{
     private int year, month, day;
 
     String namaBarang;
-    int hargaBarang;
+    long hargaBarang;
 
     public KeuanganFragment(){
 

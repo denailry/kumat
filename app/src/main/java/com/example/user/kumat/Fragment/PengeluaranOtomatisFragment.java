@@ -53,7 +53,7 @@ public class PengeluaranOtomatisFragment extends Fragment implements Pengeluaran
     PengeluaranOtomatisAdapter adapter;
 
     String namaBarang;
-    int hargaBarang;
+    long hargaBarang;
 
     private Calendar calendar;
     private int year, month, day,hour, minute;
@@ -127,8 +127,8 @@ public class PengeluaranOtomatisFragment extends Fragment implements Pengeluaran
                         hargaBarang = Integer.parseInt(boxNominalOtomatis.getText().toString());
                         day = Integer.parseInt(boxTanggalOtomatis.getText().toString());
 
-                        if ((day<1)||(day>29)){
-                            Toast.makeText(getContext(),"Tanggal harus diantara 1 - 29",Toast.LENGTH_SHORT).show();
+                        if ((day<1)||(day>28)){
+                            Toast.makeText(getContext(),"Tanggal harus diantara 1 - 28",Toast.LENGTH_SHORT).show();
                         }else{
                             PengeluaranOtomatisDatabase pengel = new PengeluaranOtomatisDatabase();
                             pengel.setId(idOtomatis);

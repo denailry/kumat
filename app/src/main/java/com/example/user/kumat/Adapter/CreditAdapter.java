@@ -51,7 +51,7 @@ public class CreditAdapter extends RecyclerView.Adapter<CreditAdapter.ViewHolder
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position){
 
-        holder.txtJudul.setText(listJudul[position]+" -");
+        holder.txtJudul.setText(listJudul[position]+" from");
         holder.txtUrl.setText(listUrl[position]);
 
         holder.txtUrl.setOnClickListener(new View.OnClickListener() {

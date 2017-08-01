@@ -18,7 +18,7 @@ public class QuickButtonDatabase extends BaseModel {
     @Column
     String nama;
     @Column
-    int harga;
+    long harga;
 
 
     public void setId(int id) {
@@ -43,10 +43,10 @@ public class QuickButtonDatabase extends BaseModel {
         this.nama=nama;
     }
 
-    public int getHarga(){
+    public long getHarga(){
         return harga;
     }
-    public void setHarga(int harga){
+    public void setHarga(long harga){
         this.harga=harga;
     }
 }

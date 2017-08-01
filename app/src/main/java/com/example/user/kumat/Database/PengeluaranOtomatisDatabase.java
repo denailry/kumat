@@ -19,7 +19,7 @@ public class PengeluaranOtomatisDatabase extends BaseModel {
     @Column
     String namaBarang;
     @Column
-    int hargaBarang;
+    long hargaBarang;
     @Column
     int tanggal;
     @Column
@@ -36,7 +36,7 @@ public class PengeluaranOtomatisDatabase extends BaseModel {
     }
 
 
-    public void setHargaBarang(int hargaBarang) {
+    public void setHargaBarang(long hargaBarang) {
         this.hargaBarang = hargaBarang;
     }
 
@@ -62,7 +62,7 @@ public class PengeluaranOtomatisDatabase extends BaseModel {
         return id;
     }
 
-    public int getHargaBarang() {
+    public long getHargaBarang() {
         return hargaBarang;
     }
 

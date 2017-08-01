@@ -15,7 +15,7 @@ public class SaldoDatabase extends BaseModel{
     @PrimaryKey
     int id;
     @Column
-    int saldo;
+    long saldo;
     @Column
     int index;
     @Column
@@ -35,10 +35,10 @@ public class SaldoDatabase extends BaseModel{
     public void setId(int id){
         this.id=id;
     }
-    public int getSaldo(){
+    public long getSaldo(){
         return saldo;
     }
-    public void setSaldo(int saldo){
+    public void setSaldo(long saldo){
         this.saldo=saldo;
     }
 
