@@ -27,6 +27,8 @@ import android.widget.Toast;
 
 import com.example.user.kumat.Adapter.QuickButtonAdapter;
 import com.example.user.kumat.Database.AktivitasKeuanganDatabase;
+import com.example.user.kumat.Database.ProfilDatabase;
+import com.example.user.kumat.Database.ProfilDatabase_Table;
 import com.example.user.kumat.Database.QuickButtonDatabase;
 import com.example.user.kumat.Database.SaldoDatabase;
 import com.example.user.kumat.Database.SaldoDatabase_Table;
@@ -174,7 +176,19 @@ public class KeuanganFragment extends Fragment implements QuickButtonListener{
                 }
             }
         });
+
+        txtSaldo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (txtSaldo.getCurrentTextColor()==getResources().getColor(R.color.merah)){
+                    Snackbar.make(v,"Saldo anda dalam masa masa kritis", BaseTransientBottomBar.LENGTH_SHORT)
+                            .setAction("Action",null).show();
+                }
+            }
+        });
+
     }
+
 
     private void setHariIni() {
         calendar = new GregorianCalendar();
@@ -306,6 +320,13 @@ public class KeuanganFragment extends Fragment implements QuickButtonListener{
             idxQuick=saldoSearch.get(0).getIndexQuick();
             String saldoo = ((MainActivity)getActivity()).editRupiah(String.valueOf(saldo));
             txtSaldo.setText(saldoo);
+
+            ProfilDatabase profil = new Select().from(ProfilDatabase.class).where(ProfilDatabase_Table.id.is(1)).querySingle();
+            if (saldo<profil.getSaldoMinimum()){
+                txtSaldo.setTextColor(getResources().getColor(R.color.merah));
+            }else{
+                txtSaldo.setTextColor(getResources().getColor(R.color.black));
+            }
         }
     }
 

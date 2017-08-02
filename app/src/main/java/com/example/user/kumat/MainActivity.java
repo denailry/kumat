@@ -370,6 +370,7 @@ public class MainActivity extends AppCompatActivity implements IconListener {
             profil.setBukuHutang(false);
             profil.setEmail("kumat@email.com");
             profil.setXp(0);
+            profil.setSaldoMinimum(0);
             profil.save();
             showKoinDialog(100);
 

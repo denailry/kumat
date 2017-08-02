@@ -188,7 +188,7 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:id="@+id/text_saldo"
-                android:layout_marginRight="25dp"
+                android:layout_marginRight="24dp"
                 android:textStyle="bold"/>
         </RelativeLayout>
 

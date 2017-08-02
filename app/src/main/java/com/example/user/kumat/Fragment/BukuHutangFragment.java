@@ -156,7 +156,7 @@ public class BukuHutangFragment extends Fragment implements BukuHutangListener{
                             edtNominal.setText("");
 
                             //pemasukan
-                            pemasukan(3,"(Hutang) "+namaOrang,nominalHarga,thisDay,thisMonth,thisYear);
+                            pemasukan(3,"(H) "+namaOrang,nominalHarga,thisDay,thisMonth,thisYear);
                             callHutangData();
 
                         }else{
@@ -178,7 +178,7 @@ public class BukuHutangFragment extends Fragment implements BukuHutangListener{
                                 edtNominal.setText("");
 
                                 //pengeluaran
-                                pengeluaran(2, "(Piutang) "+namaOrang,nominalHarga,thisDay,thisMonth,thisYear);
+                                pengeluaran(2, "(P) "+namaOrang,nominalHarga,thisDay,thisMonth,thisYear);
 
                                 callPiutangData();
 
@@ -322,7 +322,7 @@ public class BukuHutangFragment extends Fragment implements BukuHutangListener{
 
                 Toast.makeText(getContext(), "Hutang telah dibayar", Toast.LENGTH_SHORT).show();
 
-                pengeluaran(4,"(Bayar) "+bukuHutangDatabase.getNama(),bukuHutangDatabase.getNominal(),thisDay,thisMonth,thisYear);
+                pengeluaran(4,"(H) "+bukuHutangDatabase.getNama(),bukuHutangDatabase.getNominal(),thisDay,thisMonth,thisYear);
 
                 callHutangData();
             }
@@ -338,7 +338,7 @@ public class BukuHutangFragment extends Fragment implements BukuHutangListener{
             bukuHutang.setIdAktivitas(idAktivitas);
             bukuHutang.save();
 
-            pemasukan(5,"(Dibayar) "+bukuHutangDatabase.getNama(),bukuHutangDatabase.getNominal(),thisDay,thisMonth,thisYear);
+            pemasukan(5,"(P) "+bukuHutangDatabase.getNama(),bukuHutangDatabase.getNominal(),thisDay,thisMonth,thisYear);
 
             Toast.makeText(getContext(), "Piutang telah dibayar", Toast.LENGTH_SHORT).show();
 

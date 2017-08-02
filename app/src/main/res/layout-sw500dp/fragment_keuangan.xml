@@ -191,6 +191,7 @@
                 android:id="@+id/text_saldo"
                 android:layout_marginRight="30dp"
                 android:textStyle="bold"/>
+
         </RelativeLayout>
 
 

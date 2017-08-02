@@ -26,6 +26,15 @@ public class ProfilDatabase extends BaseModel {
     @Column private Blob fotoProfil;
     @Column private boolean bukuHutang;
     @Column private Integer updateId;
+    @Column private long saldoMinimum;
+
+    public long getSaldoMinimum() {
+        return saldoMinimum;
+    }
+
+    public void setSaldoMinimum(long saldoMinimum) {
+        this.saldoMinimum = saldoMinimum;
+    }
 
     public ProfilDatabase() {}
 

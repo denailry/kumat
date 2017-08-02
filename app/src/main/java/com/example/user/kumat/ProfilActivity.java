@@ -7,6 +7,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
@@ -28,8 +29,8 @@ import java.io.IOException;
 public class ProfilActivity extends AppCompatActivity {
 
     ImageView imgProfil;
-    TextView txtUsername,txtEmail;
-    ImageView btnEditUsername, btnEditEmail;
+    TextView txtUsername,txtEmail, txtSaldoMinimum;
+    ImageView btnEditUsername, btnEditEmail, btnEditSaldoMinimum;
 
     RelativeLayout backgroundEdit;
     EditText edtUbah;
@@ -53,8 +54,10 @@ public class ProfilActivity extends AppCompatActivity {
         imgProfil = (ImageView)findViewById(R.id.img_foto_profil);
         txtUsername = (TextView)findViewById(R.id.txt_nama_profil);
         txtEmail = (TextView)findViewById(R.id.txt_email_profil);
+        txtSaldoMinimum = (TextView)findViewById(R.id.txt_saldo_minimum);
         btnEditEmail = (ImageView)findViewById(R.id.edit_email_profil);
         btnEditUsername = (ImageView)findViewById(R.id.edit_nama_profil);
+        btnEditSaldoMinimum = (ImageView)findViewById(R.id.edt_minimum_saldo);
 
         backgroundEdit = (RelativeLayout)findViewById(R.id.background_profil);
         edtUbah = (EditText) findViewById(R.id.edt_profil);
@@ -69,6 +72,8 @@ public class ProfilActivity extends AppCompatActivity {
             public void onClick(View v) {
                 backgroundEdit.setVisibility(View.VISIBLE);
                 edtUbah.setHint("Username");
+                edtUbah.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+                edtUbah.setText("");
                 pilihan = 1;
 
             }
@@ -79,8 +84,28 @@ public class ProfilActivity extends AppCompatActivity {
             public void onClick(View v) {
                 backgroundEdit.setVisibility(View.VISIBLE);
                 edtUbah.setHint("Email");
+                edtUbah.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+                edtUbah.setText("");
                 pilihan = 2;
 
+            }
+        });
+
+        btnEditSaldoMinimum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backgroundEdit.setVisibility(View.VISIBLE);
+                edtUbah.setHint("Nominal");
+                edtUbah.setInputType(InputType.TYPE_CLASS_NUMBER);
+                edtUbah.setText("");
+                pilihan = 3 ;
+            }
+        });
+
+        backgroundEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backgroundEdit.setVisibility(View.GONE);
             }
         });
 
@@ -89,7 +114,7 @@ public class ProfilActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (TextUtils.isEmpty(edtUbah.getText())){
                     Toast.makeText(ProfilActivity.this, "Data tidak boleh kosong", Toast.LENGTH_SHORT).show();
-                }else{
+                }else if (pilihan==1 || pilihan==2){
                     String data = edtUbah.getText().toString();
 
                     if (pilihan==1){
@@ -104,6 +129,24 @@ public class ProfilActivity extends AppCompatActivity {
                     backgroundEdit.setVisibility(View.GONE);
 
                     Toast.makeText(ProfilActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+
+                }else{
+
+                    try {
+
+                        int data = Integer.parseInt(edtUbah.getText().toString());
+
+                        profil.setSaldoMinimum(data);
+                        profil.save();
+                        callProfil();
+
+                        backgroundEdit.setVisibility(View.GONE);
+
+                        Toast.makeText(ProfilActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+
+                    }catch (NumberFormatException e){
+                        Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
 
                 }
             }
@@ -149,6 +192,7 @@ public class ProfilActivity extends AppCompatActivity {
 
         txtUsername.setText(profil.getUsername());
         txtEmail.setText(profil.getEmail());
+        txtSaldoMinimum.setText("Saldo Minimum : "+editRupiah(String.valueOf(profil.getSaldoMinimum())));
         if (profil.getIkon()!= null){
             imgProfil.setImageBitmap(profil.getIkon());
         }
@@ -171,5 +215,22 @@ public class ProfilActivity extends AppCompatActivity {
             super.onBackPressed();
 
         }
+    }
+
+    public String editRupiah(String rupiah){
+        String edtRuiah = rupiah;
+        int length = edtRuiah.length();
+
+        //100000
+
+        while (length>3){
+            Log.d("rupiah", "editRupiah: "+length+", "+edtRuiah);
+            edtRuiah = edtRuiah.substring(0,(length-3))+"."+edtRuiah.substring((length-3),edtRuiah.length());
+            length = length-3;
+        }
+
+        edtRuiah = "Rp " + edtRuiah + ",-";
+
+        return edtRuiah;
     }
 }

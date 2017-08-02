@@ -72,12 +72,14 @@ public class AktivitasKeuanganAdapter extends RecyclerView.Adapter<AktivitasKeua
             }
         });
 
-        holder.txtDetail.setText(aktivitasKeuanganDatabase.getNamaBarang());
+        holder.txtDetail.setText(edtNama(aktivitasKeuanganDatabase.getNamaBarang()));
         holder.txtHarga.setText(editRupiah(String.valueOf(aktivitasKeuanganDatabase.getHargaBarang())));
 
         int day = aktivitasKeuanganDatabase.getTanggal();
         int month = aktivitasKeuanganDatabase.getBulan();
         int year = aktivitasKeuanganDatabase.getTahun();
+
+        year = year % 100;
 
         if ((day<10)&&(month+1<10)){
             holder.txtTanggal.setText("0"+day+"/0"+(month)+"/"+year);
@@ -126,6 +128,17 @@ public class AktivitasKeuanganAdapter extends RecyclerView.Adapter<AktivitasKeua
         edtRuiah = "Rp " + edtRuiah+",-";
 
         return edtRuiah;
+    }
+
+    private String edtNama(String item){
+        String edtItem = item;
+
+        if (edtItem.length()>10){
+            edtItem = edtItem.substring(0,10)+"..";
+        }
+
+        return edtItem;
+
     }
 
 
